@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "firstName": "Yaron",
+    "lastName": "Veg",
+    "skills": ["guitar", "bass", "sax-tenor", "piano", "drums"]
+  },
+  {
+    "id": "2",
+    "firstName": "Yinon",
+    "lastName": "Bar",
+    "skills": ["guitar", "bass", "sax-alto", "piano", "drums"]
+  }
+]

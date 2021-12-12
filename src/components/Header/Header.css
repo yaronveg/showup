@@ -1,0 +1,63 @@
+.Header {
+  display: flex;
+  min-height: 7vh;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.areaLogo {
+  display: flex;
+  align-items: center;
+}
+
+.logoAndTag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 25px;
+}
+
+.logo {
+  display: block;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.areaSearch {
+  display: flex;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.searchBar {
+  width: 280px;
+  padding: 0.8rem;
+  padding-left: 1rem;
+
+  border: 0;
+  outline: 0;
+
+  font-size: 1rem;
+  font-weight: 200;
+  color: #444;
+  background-color: rgb(238, 235, 246);
+}
+
+.btnSearch {
+  padding: 0.8rem;
+  color: rgb(103, 54, 219);
+  border: 0;
+  outline: 0;
+
+  background-color: rgb(238, 235, 246);
+  /* background-color: rgb(225, 218, 241); */
+  cursor: pointer;
+}
+
+.btnSearch:hover {
+  background-color: rgb(225, 218, 241);
+  /* background-color: rgb(209, 197, 236); */
+}
