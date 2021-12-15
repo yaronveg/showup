@@ -14,7 +14,7 @@ export default function Header() {
         <div className="areaSearch">
           <input className="searchBar" type={"text"} placeholder="..."></input>
           <button className="btnSearch">
-            <FontAwesomeIcon className="cartIcon" icon={faSearch} size="lg" />
+            <FontAwesomeIcon className="cartIcon" icon={faSearch} size="lg" />{" "}
           </button>
         </div>
       </div>

@@ -3,12 +3,18 @@
     "id": "1",
     "firstName": "Yaron",
     "lastName": "Veg",
-    "skills": ["guitar", "bass", "sax-tenor", "piano", "drums"]
+    "skills": ["guitar", "bass", "sax-tenor", "piano", "drums"],
+    "xp": ["local", "regional", "national", "international"],
+    "picture": "https://scontent-frt3-1.xx.fbcdn.net/v/t1.6435-9/132433140_10221371109080038_916252037937717771_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=RL-ee5Kw7nUAX8vxlZC&_nc_ht=scontent-frt3-1.xx&oh=36e2345297e8dd8f94c24bc8ac4eaaf1&oe=61DDDAD8",
+    "cover": "https://scontent-frt3-2.xx.fbcdn.net/v/t1.6435-9/119903473_10220680526935916_899098172998622829_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=e3f864&_nc_ohc=G9t_6V1_w2YAX-dm9Uu&tn=pn0p2CMwUbYckEOh&_nc_ht=scontent-frt3-2.xx&oh=36954f5b10f570af5d7ffdd9914a9f73&oe=61DD3618"
   },
   {
     "id": "2",
     "firstName": "Yinon",
     "lastName": "Bar",
-    "skills": ["guitar", "bass", "sax-alto", "piano", "drums"]
+    "skills": ["guitar", "bass", "sax-alto", "piano", "drums"],
+    "xp": ["local", "regional", "national", "international"],
+    "picture": "https://scontent-frt3-2.xx.fbcdn.net/v/t1.6435-9/72293626_10220596247795322_5589171182873083904_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=_gJtx6hvWEQAX8WPDoZ&_nc_ht=scontent-frt3-2.xx&oh=00_AT-fVJIjdr3P-hAljf_tKmdpWLbBfYJdBDiqHBrlh91xiQ&oe=61DEC10E",
+    "cover": "https://scontent-frt3-2.xx.fbcdn.net/v/t1.6435-9/p960x960/72219941_10220596264235733_7923689781756690432_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=e3f864&_nc_ohc=u1LBs-6SRQ0AX9ck6LL&_nc_ht=scontent-frt3-2.xx&oh=d88bb17feccb10532624063e0f486e4e&oe=61DB1777"
   }
 ]
