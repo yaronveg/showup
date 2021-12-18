@@ -35,7 +35,7 @@
       }
 
       .right-col {
-        background-color: burlywood;
+        background-color: map-get($colors, light);
         flex: 5;
       }
     }
