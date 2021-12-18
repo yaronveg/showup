@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap");
+
 $colors: (
   primary: #6173cf,
   accent: #8158d5,
@@ -13,7 +15,7 @@ $colors: (
 );
 
 $max-width: 1100px;
-$font-stack: Raleway, Sans-Serif;
+$font-stack: Assistant, Sans-Serif;
 
 // set background and text color
 @function set-text-color($color) {

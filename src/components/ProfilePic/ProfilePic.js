@@ -1,4 +1,4 @@
-import "./ProfilePic.css";
+// import "./ProfilePic.css";
 
 export default function ProfilePic() {
   return (

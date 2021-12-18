@@ -1,5 +1,6 @@
 import React from "react";
-import "./App.css";
+// import "./App.css";
+import "./style.css";
 import Header from "./components/Header/Header";
 import UserProfile from "./components/UserProfile/UserProfile";
 

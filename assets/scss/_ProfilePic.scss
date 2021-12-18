@@ -1,17 +1,17 @@
 .ProfilePic {
   border-radius: 50%;
   position: relative;
-  /* overflow: hidden; */
   width: 100px;
   height: 100px;
-  border: 10px #c6cae3 solid;
-}
-.ProfilePic img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  border: 5px #fff solid;
-  border-radius: 50%;
+  border: 10px map-get($colors, medium) solid;
+
+  img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    border: 5px map-get($colors, white) solid;
+    border-radius: 50%;
+  }
 }

@@ -1,4 +1,4 @@
-import "./Header.css";
+// import "./Header.css";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ShowUpLogo from "./logo-showup.svg";
@@ -6,7 +6,7 @@ import ShowUpLogo from "./logo-showup.svg";
 export default function Header() {
   return (
     <div className="Header">
-      <div className="header-container">
+      <div className="container">
         <div className="areaLogo">
           <div className="logoAndTag">
             <img src={ShowUpLogo} alt="showUpLogo" className="logo" />

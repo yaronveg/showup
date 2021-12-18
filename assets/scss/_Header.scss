@@ -1,68 +1,69 @@
 .Header {
   min-height: 7vh;
-  border-bottom: #5f73d1 solid 18px;
-}
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
+  border-bottom: map-get($colors, primary) solid 18px;
 
-.areaLogo {
-  display: flex;
-  align-items: center;
-}
+  .container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
 
-.logoAndTag {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-right: 25px;
-}
+    .areaLogo {
+      display: flex;
+      align-items: center;
 
-.logo {
-  display: block;
-}
+      .logoAndTag {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 25px;
 
-.tagline {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
+        .logo {
+          display: block;
+        }
+        .tagline {
+          font-size: 0.9rem;
+          font-weight: 600;
+        }
+      }
 
-.areaSearch {
-  display: flex;
-  overflow: hidden;
-  border-radius: 4px;
-}
+      .areaSearch {
+        display: flex;
+        overflow: hidden;
+        border-radius: 4px;
 
-.searchBar {
-  width: 280px;
-  padding: 0.8rem;
-  padding-left: 1rem;
+        .searchBar {
+          width: 280px;
+          padding: 0.8rem;
+          padding-left: 1rem;
 
-  border: 0;
-  outline: 0;
+          border: 0;
+          outline: 0;
 
-  font-size: 1rem;
-  font-weight: 200;
-  color: #444;
-  background-color: rgb(238, 235, 246);
-}
+          font-size: 1rem;
+          font-weight: 200;
+          @include set-background(map-get($colors, lighter));
+          // color: map-get($colors, dark);
+          // background-color: map-get($colors, lighter);
+        }
 
-.btnSearch {
-  padding: 0.8rem;
-  color: rgb(103, 54, 219);
-  border: 0;
-  outline: 0;
+        .btnSearch {
+          padding: 0.8rem;
+          border: 0;
+          outline: 0;
 
-  background-color: rgb(238, 235, 246);
-  /* background-color: rgb(225, 218, 241); */
-  cursor: pointer;
-}
+          color: map-get($colors, accent);
+          background-color: map-get($colors, lighter);
+          cursor: pointer;
+        }
 
-.btnSearch:hover {
-  background-color: rgb(225, 218, 241);
-  /* background-color: rgb(209, 197, 236); */
+        .btnSearch:hover {
+          background-color: map-get($colors, light);
+        }
+      }
+    }
+    .areaIcons {
+    }
+  }
 }
