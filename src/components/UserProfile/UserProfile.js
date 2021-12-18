@@ -1,4 +1,3 @@
-// import "./UserProfile.css";
 import ProfilePic from "../ProfilePic/ProfilePic";
 
 export default function UserProfile() {

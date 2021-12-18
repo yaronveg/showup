@@ -21,6 +21,7 @@
 
         .logo {
           display: block;
+          width: 180px;
         }
         .tagline {
           font-size: 0.9rem;
@@ -37,15 +38,13 @@
           width: 280px;
           padding: 0.8rem;
           padding-left: 1rem;
-
+          text-align: left;
           border: 0;
           outline: 0;
 
           font-size: 1rem;
           font-weight: 200;
           @include set-background(map-get($colors, lighter));
-          // color: map-get($colors, dark);
-          // background-color: map-get($colors, lighter);
         }
 
         .btnSearch {

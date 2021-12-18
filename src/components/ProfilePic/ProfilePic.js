@@ -1,5 +1,3 @@
-// import "./ProfilePic.css";
-
 export default function ProfilePic() {
   return (
     <div className="ProfilePic">
