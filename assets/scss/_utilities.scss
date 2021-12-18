@@ -1,0 +1,131 @@
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+// round img
+.round-img {
+  border-radius: 50%;
+}
+
+.line {
+  height: 1px;
+  background: #ccc;
+  margin: 1.5rem 0;
+}
+
+// margin and padding classes using a loop
+$spaceamounts: (1, 2, 3, 4, 5);
+@each $space in $spaceamounts {
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
+  .my-#{$space} {
+    margin-top: #{$space}rem;
+    margin-bottom: #{$space}rem;
+  }
+  .mx-#{$space} {
+    margin-left: #{$space}rem;
+    margin-right: #{$space}rem;
+  }
+  .p-#{$space} {
+    padding: #{$space}rem;
+  }
+  .py-#{$space} {
+    padding-top: #{$space}rem;
+    padding-bottom: #{$space}rem;
+  }
+  .px-#{$space} {
+    padding-left: #{$space}rem;
+    padding-right: #{$space}rem;
+  }
+}
+
+// text styles
+.x-large {
+  font-size: 4rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.large {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.lead {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+// text colors
+.text {
+  @each $colorName, $color in $colors {
+    &-#{$colorName} {
+      color: map-get($colors, $colorName);
+    }
+  }
+}
+// BACKGROUNDS
+.bg {
+  @each $colorName, $color in $colors {
+    &-#{$colorName} {
+      @include set-background(map-get($colors, $colorName));
+    }
+  }
+  &-light,
+  &-white {
+    border: 1px solid darken(map-get($colors, light), 6);
+  }
+}
+
+.dark-overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  // background-color: rgba(0, 0, 0, 0.7);
+}
+
+// ALERTS
+.alert {
+  padding: 0.8rem;
+  padding-left: 0.8rem;
+  margin: 1rem;
+  // background: map-get($colors, white);
+  color: #333;
+  @each $colorName, $color in $colors {
+    &-#{$colorName} {
+      color: map-get($colors, $colorName);
+    }
+  }
+}
+
+// BADGES
+.badge {
+  padding-bottom: 0.1rem;
+  margin: 0.3rem;
+  background: map-get($colors, light);
+  text-align: center;
+  font-size: 0.8rem;
+
+  @each $colorName, $color in $colors {
+    &-#{$colorName} {
+      @include set-background($color);
+    }
+  }
+}
+
+.table {
+  width: 100%;
+  th,
+  td {
+    padding: 1rem;
+    text-align: left;
+  }
+
+  th {
+    background: map-get($colors, light);
+  }
+}

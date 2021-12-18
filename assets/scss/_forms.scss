@@ -1,0 +1,42 @@
+.form {
+  &-group {
+    margin: 1.2rem 0;
+    input,
+    select,
+    textarea {
+      padding: 0.7rem 2rem;
+      display: block;
+      width: 100%;
+      font-size: 1.2rem;
+      border: 1px solid map-get($colors, light);
+      border-radius: 5px;
+    }
+  }
+  &-text {
+    display: block;
+    margin-top: 0.3rem;
+    color: map-get($colors, grey);
+  }
+  select:focus {
+    outline: none;
+  }
+  .social-input {
+    display: flex;
+    i {
+      font-size: 2rem;
+      margin-right: 1rem;
+      color: map-get($colors, dark);
+    }
+  }
+  input[type="submit"] {
+    @extend .btns;
+    font: inherit;
+  }
+  input[type="checkbox"] {
+    display: inline-block;
+    width: 1rem;
+    & ~ p {
+      display: inline-block;
+    }
+  }
+}

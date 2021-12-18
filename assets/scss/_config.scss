@@ -1,0 +1,40 @@
+$colors: (
+  primary: #6173cf,
+  accent: #8158d5,
+  darker: #2e3035,
+  dark: #4c4f58,
+  grey: #858994,
+  medium: #b9c0de,
+  light: #e3e6f6,
+  lighter: #e9eef5,
+  danger: #bd2424,
+  success: #24bd4a,
+  white: #fff,
+);
+
+$max-width: 1100px;
+$font-stack: Raleway, Sans-Serif;
+
+// set background and text color
+@function set-text-color($color) {
+  @if (lightness($color) > 70) {
+    @return map-get($colors, darker);
+  } @else {
+    @return #fff;
+  }
+}
+// @function set-link-color($color) {
+//   @if (lightness($color) < 0) {
+//     @return map-get($colors, light);
+//   } @else {
+//     @return map-get($colors, darker);
+//   }
+// }
+
+@mixin set-background($color) {
+  background-color: $color;
+  color: set-text-color($color);
+  // a {
+  //   color: set-link-color($color);
+  // }
+}
