@@ -2,9 +2,16 @@ import ConnectionCount from "../ConnectionCount/ConnectionCount";
 import ProfilePic from "../ProfilePic/ProfilePic";
 import UserLocation from "../UserLocation/UserLocation";
 import Chips from "../Chips/Chips";
+import ProfileGallery from "../ProfileGallery/ProfoileGallery";
 
 const skills = ["Guitar", "Bass", "Piano", "Drums"];
 const genres = ["Rock", "Alt", "Acoustic", "Pop"];
+const galleryPictures = [
+  "/assets/standbys/profileGallery1.jpg",
+  "/assets/standbys/profileGallery2.jpg",
+  "/assets/standbys/profileGallery3.jpg",
+  "/assets/standbys/profileGallery4.jpg",
+];
 
 export default function UserProfile() {
   return (
@@ -33,6 +40,7 @@ export default function UserProfile() {
                 <Chips arr={genres} />
               </div>
             </div>
+            <ProfileGallery arr={galleryPictures} />
           </div>
           <div className="main-col">right</div>
         </div>
