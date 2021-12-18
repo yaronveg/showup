@@ -1,0 +1,9 @@
+.UserLocation {
+  .locationIcon {
+    margin-right: 0.5rem;
+    color: map-get($colors, primary);
+  }
+  h4 {
+    display: inline-block;
+  }
+}

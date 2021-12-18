@@ -1,4 +1,5 @@
 import ProfilePic from "../ProfilePic/ProfilePic";
+import UserLocation from "../UserLocation/UserLocation";
 
 export default function UserProfile() {
   return (
@@ -16,6 +17,7 @@ export default function UserProfile() {
             <div className="profile-pic">
               <ProfilePic />
             </div>
+            <UserLocation />
           </div>
           <div className="right-col">right</div>
         </div>

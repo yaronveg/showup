@@ -18,7 +18,11 @@ export default function Header() {
               placeholder="..."
             ></input>
             <button className="btnSearch">
-              <FontAwesomeIcon className="cartIcon" icon={faSearch} size="lg" />{" "}
+              <FontAwesomeIcon
+                className="searchIcon"
+                icon={faSearch}
+                size="lg"
+              />{" "}
             </button>
           </div>
         </div>
