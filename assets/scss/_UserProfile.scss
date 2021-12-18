@@ -21,10 +21,16 @@
         width: 100%;
         display: fixed;
         margin: 0 auto;
-        margin-top: -70px;
+        margin-top: -65px;
+        color: map-get($colors, dark);
 
         .profile-pic > * {
           margin: 0 auto;
+          margin-bottom: -3px;
+        }
+        .profileName {
+          font-size: 1.3rem;
+          font-weight: 900;
         }
       }
 

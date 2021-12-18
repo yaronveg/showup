@@ -1,7 +1,8 @@
-.UserLocation {
-  .locationIcon {
+.infoMinimal {
+  .infoIcon {
     margin-right: 0.5rem;
     color: map-get($colors, primary);
+    width: 0.9rem;
   }
   h4 {
     display: inline-block;

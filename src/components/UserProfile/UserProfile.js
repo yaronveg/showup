@@ -1,3 +1,4 @@
+import ConnectionCount from "../ConnectionCount/ConnectionCount";
 import ProfilePic from "../ProfilePic/ProfilePic";
 import UserLocation from "../UserLocation/UserLocation";
 
@@ -17,7 +18,9 @@ export default function UserProfile() {
             <div className="profile-pic">
               <ProfilePic />
             </div>
+            <h4 className="profileName">Yaron Veg</h4>
             <UserLocation />
+            <ConnectionCount />
           </div>
           <div className="right-col">right</div>
         </div>

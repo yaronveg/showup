@@ -2,6 +2,7 @@
 @import "utilities";
 @import "buttons";
 @import "forms";
+@import "infoMinimal";
 
 * {
   box-sizing: border-box;
@@ -47,4 +48,3 @@ body {
 @import "ProfilePic";
 @import "SideBar";
 @import "UserProfile";
-@import "UserLocation";
