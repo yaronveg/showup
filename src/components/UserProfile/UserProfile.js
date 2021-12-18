@@ -1,6 +1,10 @@
 import ConnectionCount from "../ConnectionCount/ConnectionCount";
 import ProfilePic from "../ProfilePic/ProfilePic";
 import UserLocation from "../UserLocation/UserLocation";
+import Chips from "../Chips/Chips";
+
+const skills = ["Guitar", "Bass", "Piano", "Drums"];
+const genres = ["Rock", "Alt", "Acoustic", "Pop"];
 
 export default function UserProfile() {
   return (
@@ -14,15 +18,23 @@ export default function UserProfile() {
           />
         </div>
         <div className="profile-cols">
-          <div className="left-col">
-            <div className="profile-pic">
-              <ProfilePic />
+          <div className="side-col">
+            <div class="side-top">
+              <div className="profile-pic">
+                <ProfilePic />
+              </div>
+              <h4 className="profileName">Yaron Veg</h4>
+              <UserLocation />
+              <ConnectionCount />
+              <div className="profileChips">
+                <Chips arr={skills} />
+              </div>
+              <div className="profileChips">
+                <Chips arr={genres} />
+              </div>
             </div>
-            <h4 className="profileName">Yaron Veg</h4>
-            <UserLocation />
-            <ConnectionCount />
           </div>
-          <div className="right-col">right</div>
+          <div className="main-col">right</div>
         </div>
       </div>
     </div>

@@ -117,6 +117,13 @@ $spaceamounts: (1, 2, 3, 4, 5);
   }
 }
 
+.chip {
+  padding: 0.1em 0.4em;
+  border-radius: 1em;
+  @include set-background(map-get($colors, light));
+  font-weight: 300;
+}
+
 .table {
   width: 100%;
   th,

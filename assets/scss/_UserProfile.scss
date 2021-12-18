@@ -16,25 +16,38 @@
     .profile-cols {
       display: flex;
 
-      .left-col {
+      .side-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: -65px;
         flex: 2;
         width: 100%;
-        display: fixed;
-        margin: 0 auto;
-        margin-top: -65px;
+        padding: 0.5rem;
+
         color: map-get($colors, dark);
 
-        .profile-pic > * {
-          margin: 0 auto;
-          margin-bottom: -3px;
-        }
-        .profileName {
-          font-size: 1.3rem;
-          font-weight: 900;
+        .side-top {
+          width: 100%;
+          .profile-pic > * {
+            margin: 0 auto;
+            margin-bottom: -3px;
+          }
+          .profileName {
+            font-size: 1.3rem;
+            font-weight: 900;
+          }
+          .profileChips {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+          }
         }
       }
 
-      .right-col {
+      .main-col {
         background-color: map-get($colors, light);
         flex: 5;
       }
