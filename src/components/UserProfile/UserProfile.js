@@ -3,6 +3,9 @@ import ProfilePic from "../ProfilePic/ProfilePic";
 import UserLocation from "../UserLocation/UserLocation";
 import Chips from "../Chips/Chips";
 import ProfileGallery from "../ProfileGallery/ProfileGallery";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
+import TimeLine from "../TimeLine/TimeLine";
 
 const skills = ["Guitar", "Bass", "Piano", "Drums"];
 const genres = ["Rock", "Alt", "Acoustic", "Pop"];
@@ -11,6 +14,76 @@ const galleryPictures = [
   "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/76646823_2564579766971173_4628760476229042176_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=ZdIEc5yNwmQAX_hVEJ_&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT90EMLnNWajE7iDv5uztobbu9SCzVHKdQrWZmtabruxow&oe=61E240CF",
   "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/119950836_1250680441932985_1241221853795240522_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=y2iIkIrPuIwAX_3AMVG&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT_r3OQocTW-bhSzFErCY7XgTzJ3u1XnOs-Fx6hlYziwaQ&oe=61E59993",
   "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/75250913_2564580826971067_7237483063033200640_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=chPib9lSCaEAX9OtVN-&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT8o0jyP0zc2TGArqLilpQoLQ4vXhfUC-7RZkpUPptpHiQ&oe=61E35A42",
+];
+const timestamps = [
+  {
+    year: 2021,
+    stamps: [
+      {
+        id: 1,
+        date: "Jun 27",
+        type: "playing",
+        detail: "bass",
+        text: "Yinon Bar",
+      },
+      {
+        id: 2,
+        date: "Apr 12",
+        type: "release",
+        detail: "single",
+        text: '"Im Ata Ohev Oti"',
+        subText: "Yahel Doron",
+        subType: "produced",
+      },
+    ],
+  },
+  {
+    year: 2020,
+    stamps: [
+      {
+        id: 3,
+        date: "Sep 04",
+        type: "show",
+        detail: "single debut",
+        text: "Zappa TLV",
+      },
+    ],
+  },
+  {
+    year: 2019,
+    stamps: [
+      {
+        id: 4,
+        date: "Apr 15",
+        type: "played",
+        detail: "keyboard",
+        text: "Miriam Weiss",
+      },
+      {
+        id: 5,
+        date: "Feb 21",
+        type: "skill",
+        detail: "drums",
+      },
+      {
+        id: 6,
+        date: "Feb 14",
+        type: "connection",
+        text: "Shimi Weiss",
+      },
+    ],
+  },
+  {
+    year: 2018,
+    stamps: [
+      {
+        id: 7,
+        date: "Aug 15",
+        type: "skill",
+        detail: "bass guitar",
+      },
+    ],
+  },
 ];
 
 export default function UserProfile() {
@@ -44,7 +117,16 @@ export default function UserProfile() {
               <ProfileGallery arr={galleryPictures} />
             </div>
           </div>
-          <div className="main-col">right</div>
+          <div className="main-col">
+            <div className="profileBio">
+              <FontAwesomeIcon className="bioIcon" icon={faFileAlt} />
+              <p className="bioText">
+                I'm a starting musician from Karney Shomron. Looking for a band
+                to preform with my original materials.
+              </p>
+            </div>
+            <TimeLine arr={timestamps} />
+          </div>
         </div>
       </div>
     </div>

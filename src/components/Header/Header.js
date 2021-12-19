@@ -1,5 +1,6 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faCog, faSearch, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ProfilePic from "../ProfilePic/ProfilePic";
 import ShowUpLogo from "./logo-showup.svg";
 
 export default function Header() {
@@ -26,7 +27,19 @@ export default function Header() {
             </button>
           </div>
         </div>
-        <div className="areaIcons"></div>
+        <div className="areaIcons">
+          <FontAwesomeIcon
+            className="gigsIcon header-icon"
+            icon={faUsers}
+            size="lg"
+          />
+          <FontAwesomeIcon
+            className="settingsIcon header-icon"
+            icon={faCog}
+            size="lg"
+          />
+          <ProfilePic />
+        </div>
       </div>
     </div>
   );

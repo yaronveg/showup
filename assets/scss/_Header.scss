@@ -7,7 +7,8 @@
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0.5rem;
+    padding-top: 0.8rem;
 
     .areaLogo {
       display: flex;
@@ -21,10 +22,10 @@
 
         .logo {
           display: block;
-          width: 180px;
+          width: 140px;
         }
         .tagline {
-          font-size: 0.9rem;
+          font-size: 0.8rem;
           font-weight: 600;
         }
       }
@@ -33,6 +34,7 @@
         display: flex;
         overflow: hidden;
         border-radius: 4px;
+        border: 1px solid map-get($colors, light);
 
         .searchBar {
           width: 280px;
@@ -63,6 +65,22 @@
       }
     }
     .areaIcons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .header-icon {
+        margin-right: 2rem;
+        font-size: 1.7rem;
+        color: map-get($colors, grey);
+      }
+      .ProfilePic {
+        width: 60px;
+        height: 60px;
+        border: 4px map-get($colors, medium) solid;
+        img {
+          border: 4px map-get($colors, white) solid;
+        }
+      }
     }
   }
 }
