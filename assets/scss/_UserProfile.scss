@@ -17,12 +17,12 @@
       display: flex;
 
       .side-col {
+        flex: 2;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        // justify-content: space-between;
         align-items: center;
         margin-top: -65px;
-        flex: 2;
         width: 100%;
         padding: 0.5rem;
 
@@ -45,11 +45,18 @@
             margin-top: 0.5rem;
           }
         }
+        .side-bot {
+          position: relative;
+
+          height: 100%;
+          width: 100%;
+        }
       }
 
       .main-col {
         background-color: map-get($colors, light);
         flex: 5;
+        height: 100vh;
       }
     }
   }
