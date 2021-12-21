@@ -1,0 +1,73 @@
+.AudioPlayer {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .main {
+    height: 30px;
+    width: 100%;
+    padding: 0.15rem 1rem;
+    z-index: 10;
+
+    border-radius: 15px;
+    background: map-get($colors, light);
+
+    .navigation {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .audio-btn {
+        cursor: pointer;
+
+        border: 0;
+        outline: 0;
+        background: transparent;
+
+        color: map-get($colors, accent);
+        font-size: 0.8rem;
+      }
+      .left > * {
+        padding-right: 5px;
+      }
+      .progress-container {
+        cursor: pointer;
+        background-color: map-get($colors, white);
+        border-radius: 2px;
+        width: 70%;
+        height: 3px;
+        overflow: hidden;
+
+        .progress {
+          height: 100%;
+          width: 30%;
+          background-color: map-get($colors, accent);
+
+          transition: width 100ms linear;
+        }
+      }
+    }
+  }
+  .music-playlist {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+
+    height: 0px;
+    width: 85%;
+    z-index: 5;
+
+    padding: 0.15rem 1rem;
+
+    border-radius: 0 0 15px 15px;
+    background-color: map-get($colors, lighter);
+    color: map-get($colors, primary);
+    font-weight: 100;
+
+    &.open {
+      height: 100px;
+    }
+  }
+}

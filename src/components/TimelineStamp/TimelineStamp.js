@@ -1,16 +1,22 @@
-export default function TimelineStamp({ type, text, detail }) {
+export default function TimelineStamp({
+  type,
+  text,
+  detail,
+  subText,
+  subType,
+}) {
   let returner = null;
   switch (type) {
-    case "playing":
+    case "Playing":
       returner = (
         <div className="TimelineStamp">
           <span>
-            Playing {detail && detail + " "}for <a href="#">{text}</a>
+            {type} {detail && detail + " "}for <a href="#">{text}</a>
           </span>
         </div>
       );
       break;
-    case "played":
+    case "Played":
       returner = (
         <div className="TimelineStamp">
           <span>
@@ -19,12 +25,20 @@ export default function TimelineStamp({ type, text, detail }) {
         </div>
       );
       break;
-    case "release":
+    case "Release":
       returner = (
         <div className="TimelineStamp">
           <span>
             Released {detail} - {text}
           </span>
+          {subText && (
+            <>
+              <br />
+              <span className="StampSub">
+                {subType} by <a href="#">{subText}</a>
+              </span>
+            </>
+          )}
         </div>
       );
       break;
@@ -32,19 +46,19 @@ export default function TimelineStamp({ type, text, detail }) {
       returner = (
         <div className="TimelineStamp">
           <span>
-            {detail} show at <a href="#">{text}</a>
+            {detail} {type} at <a href="#">{text}</a>
           </span>
         </div>
       );
       break;
-    case "skill":
+    case "Skill":
       returner = (
         <div className="TimelineStamp">
           <span>Started playing {detail}</span>
         </div>
       );
       break;
-    case "connection":
+    case "Connection":
       returner = (
         <div className="TimelineStamp">
           <span>

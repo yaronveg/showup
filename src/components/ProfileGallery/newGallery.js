@@ -1,8 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { showByIndex, hide, changeImg } from "../../app/gallerySlice";
-import React from "react";
+import { toggleVisible, changeImg } from "../../app/gallerySlice";
+import React, { Component } from "react";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
+
+let i = 0;
 
 export default function ProfileGallery({ galleryPictures }) {
   const { index, isShow } = useSelector((state) => state.gallery);
@@ -11,13 +13,13 @@ export default function ProfileGallery({ galleryPictures }) {
   return (
     <div className="profileGallery">
       {galleryPictures.map((pic) => {
-        const currI = galleryPictures.indexOf(pic);
+        i++;
         return (
           <div
             className="galleryPic"
-            key={currI}
+            key={i}
             style={{ backgroundImage: `url(${pic})` }}
-            onClick={() => dispatch(showByIndex(currI))}
+            onClick={() => dispatch(toggleVisible())}
           />
         );
       })}
@@ -30,7 +32,7 @@ export default function ProfileGallery({ galleryPictures }) {
               (index + galleryPictures.length - 1) % galleryPictures.length
             ]
           }
-          onCloseRequest={() => dispatch(hide())}
+          onCloseRequest={dispatch(toggleVisible())}
           onMovePrevRequest={() =>
             dispatch(
               changeImg(

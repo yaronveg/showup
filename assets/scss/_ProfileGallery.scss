@@ -16,6 +16,7 @@
     background-size: cover;
     background-repeat: none;
     transition: flex 0.8s ease;
+    cursor: pointer;
     &:hover {
       flex: 7;
     }

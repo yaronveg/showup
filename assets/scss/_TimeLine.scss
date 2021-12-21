@@ -10,10 +10,10 @@
   overflow-y: visible;
   .year-wrap {
     display: block;
-    margin-left: 50px;
+    margin-left: 60px;
     .yearTitle {
       display: block;
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 100;
       color: map-get($colors, grey);
       margin-bottom: -0.8rem;
@@ -28,6 +28,11 @@
       svg {
         margin-right: 0.6rem;
         color: map-get($colors, primary);
+      }
+      .TimelineStamp {
+        .StampSub {
+          font-size: 0.85rem;
+        }
       }
     }
   }

@@ -122,6 +122,8 @@ $spaceamounts: (1, 2, 3, 4, 5);
   border-radius: 1em;
   @include set-background(map-get($colors, light));
   font-weight: 300;
+  margin-bottom: 7px;
+  margin-right: 8px;
 }
 
 .table {

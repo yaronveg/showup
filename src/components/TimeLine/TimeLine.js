@@ -8,10 +8,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TimelineStamp from "../TimelineStamp/TimelineStamp";
 
-export default function TimeLine({ arr }) {
+export default function TimeLine({ timestamps }) {
   return (
     <div className="TimeLine">
-      {arr.map((yearStamps) => {
+      {timestamps.map((yearStamps) => {
         const { year, stamps } = yearStamps;
         return (
           <div className="year-wrap" key={year}>
@@ -19,27 +19,22 @@ export default function TimeLine({ arr }) {
             {stamps.map((stamp) => {
               let stampIcon = null;
               switch (stamp.type) {
-                case "playing":
-                  stampIcon = faHandsHelping;
-                  //   stampText =
-                  //     "Playing " +
-                  //     (stamp.detail && stamp.detail + " ") +
-                  //     "for " +
-                  //     <a href="#">{stamp.text}</a>;
-                  break;
-                case "played":
+                case "Playing":
                   stampIcon = faHandsHelping;
                   break;
-                case "release":
+                case "Played":
+                  stampIcon = faHandsHelping;
+                  break;
+                case "Release":
                   stampIcon = faMusic;
                   break;
                 case "show":
                   stampIcon = faDrum;
                   break;
-                case "skill":
+                case "Skill":
                   stampIcon = faStar;
                   break;
-                case "connection":
+                case "Connection":
                   stampIcon = faLink;
                   break;
                 default:
@@ -54,6 +49,8 @@ export default function TimeLine({ arr }) {
                     type={stamp.type}
                     text={stamp.text}
                     detail={stamp.detail}
+                    subText={stamp.subText}
+                    subType={stamp.subType}
                   />
                 </div>
               );

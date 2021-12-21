@@ -15,46 +15,64 @@
 
     .profile-cols {
       display: flex;
-
-      .side-col {
-        flex: 2;
-        display: flex;
-        flex-direction: column;
-        // justify-content: space-between;
-        align-items: center;
-        margin-top: -65px;
-        width: 100%;
-        padding: 0.5rem;
-
-        color: map-get($colors, dark);
-
-        .side-top {
-          width: 100%;
-          .profile-pic > * {
-            margin: 0 auto;
-            margin-bottom: -3px;
-          }
-          .profileName {
-            font-size: 1.3rem;
-            font-weight: 900;
-          }
-          .profileChips {
+      .side-push {
+        width: 230px;
+        height: 10vh;
+        background: map-get($colors, white);
+        .side-fixed {
+          position: fixed;
+          width: inherit;
+          .side-col {
+            overflow: hidden;
             display: flex;
-            width: 100%;
+            flex-direction: column;
             justify-content: space-between;
-            margin-top: 0.5rem;
+            height: 75vh;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            left: 0;
+            align-items: center;
+            margin-top: -65px;
+            padding: 0.5rem;
+
+            color: map-get($colors, dark);
+
+            .side-top {
+              width: 100%;
+              .profile-pic > * {
+                margin: 0 auto;
+                margin-bottom: -3px;
+              }
+              .profileName {
+                font-size: 1.3rem;
+                font-weight: 900;
+              }
+              .ConnectionCount {
+                margin-bottom: 12px;
+              }
+              .profileChips {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                // justify-content: space-between;
+              }
+            }
+            .side-bot {
+              height: 100%;
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+            }
           }
-        }
-        .side-bot {
-          height: 100%;
-          width: 100%;
         }
       }
-
       .main-col {
         background-color: map-get($colors, light);
         flex: 5;
         padding-bottom: 60px;
+        // overflow: scroll;
 
         .profileBio {
           position: relative;

@@ -6,9 +6,10 @@ import ProfileGallery from "../ProfileGallery/ProfileGallery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import TimeLine from "../TimeLine/TimeLine";
+import AudioPlayer from "../AudioPlayer/AudioPlayer";
 
-const skills = ["Guitar", "Bass", "Piano", "Drums"];
-const genres = ["Rock", "Alt", "Acoustic", "Pop"];
+const skills = ["Saxophone", "Guitar", "Bass", "Piano", "Drums"];
+const genres = ["Rock", "Alt", "Acoustic", "Pop", "Alternative"];
 const galleryPictures = [
   "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/75424765_2564581346971015_1892483167529467904_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=xFlrDOe5rw0AX8azPXy&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT_2dumOPxlPfRYhvWqQFRLCaXAy6GAvkznOXhZzRL-tRw&oe=61E39B59",
   "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/76646823_2564579766971173_4628760476229042176_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=ZdIEc5yNwmQAX_hVEJ_&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT90EMLnNWajE7iDv5uztobbu9SCzVHKdQrWZmtabruxow&oe=61E240CF",
@@ -22,14 +23,16 @@ const timestamps = [
       {
         id: 1,
         date: "Jun 27",
-        type: "playing",
+        type: "Playing",
         detail: "bass",
         text: "Yinon Bar",
+        subText: null,
+        subType: null,
       },
       {
         id: 2,
         date: "Apr 12",
-        type: "release",
+        type: "Release",
         detail: "single",
         text: '"Im Ata Ohev Oti"',
         subText: "Yahel Doron",
@@ -44,8 +47,10 @@ const timestamps = [
         id: 3,
         date: "Sep 04",
         type: "show",
-        detail: "single debut",
+        detail: "Single debut",
         text: "Zappa TLV",
+        subText: null,
+        subType: null,
       },
     ],
   },
@@ -55,21 +60,29 @@ const timestamps = [
       {
         id: 4,
         date: "Apr 15",
-        type: "played",
+        type: "Played",
         detail: "keyboard",
         text: "Miriam Weiss",
+        subText: null,
+        subType: null,
       },
       {
         id: 5,
         date: "Feb 21",
-        type: "skill",
+        type: "Skill",
         detail: "drums",
+        text: null,
+        subText: null,
+        subType: null,
       },
       {
         id: 6,
         date: "Feb 14",
-        type: "connection",
+        type: "Connection",
+        detail: null,
         text: "Shimi Weiss",
+        subText: null,
+        subType: null,
       },
     ],
   },
@@ -79,8 +92,11 @@ const timestamps = [
       {
         id: 7,
         date: "Aug 15",
-        type: "skill",
+        type: "Skill",
         detail: "bass guitar",
+        text: null,
+        subText: null,
+        subType: null,
       },
     ],
   },
@@ -98,23 +114,28 @@ export default function UserProfile() {
           />
         </div>
         <div className="profile-cols">
-          <div className="side-col">
-            <div className="side-top">
-              <div className="profile-pic">
-                <ProfilePic />
+          <div className="side-push">
+            <div className="side-fixed">
+              <div className="side-col">
+                <div className="side-top">
+                  <div className="profile-pic">
+                    <ProfilePic />
+                  </div>
+                  <h4 className="profileName">Yaron Veg</h4>
+                  <UserLocation />
+                  <ConnectionCount />
+                  <AudioPlayer />
+                  <div className="profileChips">
+                    <Chips chips={skills} />
+                  </div>
+                  <div className="profileChips">
+                    <Chips chips={genres} />
+                  </div>
+                </div>
+                <div className="side-bot">
+                  <ProfileGallery galleryPictures={galleryPictures} />
+                </div>
               </div>
-              <h4 className="profileName">Yaron Veg</h4>
-              <UserLocation />
-              <ConnectionCount />
-              <div className="profileChips">
-                <Chips arr={skills} />
-              </div>
-              <div className="profileChips">
-                <Chips arr={genres} />
-              </div>
-            </div>
-            <div className="side-bot">
-              <ProfileGallery arr={galleryPictures} />
             </div>
           </div>
           <div className="main-col">
@@ -125,7 +146,7 @@ export default function UserProfile() {
                 to preform with my original materials.
               </p>
             </div>
-            <TimeLine arr={timestamps} />
+            <TimeLine timestamps={timestamps} />
           </div>
         </div>
       </div>

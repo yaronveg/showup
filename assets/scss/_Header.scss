@@ -1,4 +1,8 @@
 .Header {
+  position: sticky;
+  top: 0;
+  background-color: map-get($colors, white);
+  z-index: 20;
   min-height: 7vh;
   border-bottom: map-get($colors, primary) solid 18px;
 
