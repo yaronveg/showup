@@ -11,7 +11,8 @@ export default function TimelineStamp({
       returner = (
         <div className="TimelineStamp">
           <span>
-            {type} {detail && detail + " "}for <a href="#">{text}</a>
+            {type} {detail && detail + " "}for{" "}
+            <a href="www.google.com">{text}</a>
           </span>
         </div>
       );
@@ -20,7 +21,8 @@ export default function TimelineStamp({
       returner = (
         <div className="TimelineStamp">
           <span>
-            Played {detail && detail + " "}for <a href="#">{text}</a>
+            Played {detail && detail + " "}for{" "}
+            <a href="www.google.com">{text}</a>
           </span>
         </div>
       );
@@ -35,7 +37,7 @@ export default function TimelineStamp({
             <>
               <br />
               <span className="StampSub">
-                {subType} by <a href="#">{subText}</a>
+                {subType} by <a href="www.google.com">{subText}</a>
               </span>
             </>
           )}
@@ -46,7 +48,7 @@ export default function TimelineStamp({
       returner = (
         <div className="TimelineStamp">
           <span>
-            {detail} {type} at <a href="#">{text}</a>
+            {detail} {type} at <a href="www.google.com">{text}</a>
           </span>
         </div>
       );
@@ -62,7 +64,7 @@ export default function TimelineStamp({
       returner = (
         <div className="TimelineStamp">
           <span>
-            Connected with <a href="#">{text}</a>
+            Connected with <a href="www.google.com">{text}</a>
           </span>
         </div>
       );
