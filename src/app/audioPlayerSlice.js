@@ -3,17 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   playlist: [
     {
-      src: "../../assets/standbys/profile-audios/aud1.mp3",
+      src: "/aud1.mp3",
       title: "song 1",
       duration: 0,
     },
     {
-      src: "../../assets/standbys/profile-audios/aud2.mp3",
+      src: "/aud2.mp3",
       title: "song 2",
       duration: 0,
     },
     {
-      src: "../../assets/standbys/profile-audios/aud3.mp3",
+      src: "/aud3.mp3",
       title: "song 3",
       duration: 0,
     },
@@ -22,25 +22,35 @@ const initialState = {
   isPlaying: false,
   listOpen: false,
   progress: 0,
+  duration: 0,
 };
 
 export const audioPlayerSlice = createSlice({
   name: "audioPlayer",
   initialState,
   reducers: {
+    setDuration: (audioPlayerState, action) => {
+      console.log(action.payload.duration);
+      audioPlayerState.duration = action.payload.duration;
+      console.log(action.payload.duration);
+    },
     changeProgress: (audioPlayerState, action) => {
-      audioPlayerState.progress = action.payload;
+      const { currentTime, duration } = action.payload;
+      const newProgress = (currentTime / duration) * 100;
+      audioPlayerState.progress = newProgress;
     },
     loadPlaylist: (audioPlayerState, action) => {
       console.log("loading playlist...");
     },
     changeSong: (audioPlayerState, action) => {
+      audioPlayerState.isPlaying = true;
       audioPlayerState.currentSong = action.payload;
     },
     togglePlay: (audioPlayerState) => {
       audioPlayerState.isPlaying = !audioPlayerState.isPlaying;
     },
     next: (audioPlayerState) => {
+      audioPlayerState.isPlaying = true;
       audioPlayerState.currentSong++;
       if (audioPlayerState.currentSong >= audioPlayerState.playlist.length) {
         audioPlayerState.currentSong = 0;
@@ -53,6 +63,7 @@ export const audioPlayerSlice = createSlice({
 });
 
 export const {
+  setDuration,
   loadPlaylist,
   togglePlay,
   changeSong,

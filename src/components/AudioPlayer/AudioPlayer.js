@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   togglePlay,
@@ -15,6 +15,7 @@ import {
   togglePlaylist,
   changeProgress,
   loadPlaylist,
+  // setDuration,
 } from "../../app/audioPlayerSlice";
 
 export default function AudioPlayer() {
@@ -23,19 +24,35 @@ export default function AudioPlayer() {
   );
   const dispatch = useDispatch();
 
-  // temp fix to warning for unused
-  console.log("progress: ", progress);
+  // references
+  const audio = useRef();
 
+  useEffect(() => {
+    console.log(audio.current.duration);
+  }, [audio?.current?.duration, audio?.current?.currentTime]);
   useEffect(() => {
     dispatch(loadPlaylist());
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   const newDuration = audio.current.duration();
+  //   dispatch(setDuration(newDuration));
+  // }, [audio, dispatch, currentSong]);
+
+  useEffect(() => {
+    isPlaying ? audio.current.play() : audio.current.pause();
+  }, [isPlaying, audio, currentSong]);
 
   const playlistStyle = listOpen ? "music-playlist open" : "music-playlist";
 
   return (
     <div className="AudioPlayer">
       <div className="main">
-        <audio src={playlist[currentSong].src} className="audio"></audio>
+        <audio
+          src={playlist[currentSong].src}
+          className="audio"
+          ref={audio}
+        ></audio>
         <div className="navigation">
           <div className="left">
             <button className="library audio-btn">
@@ -61,6 +78,7 @@ export default function AudioPlayer() {
             <div
               className="progress"
               onClick={() => dispatch(changeProgress())}
+              style={{ width: `${progress}%` }}
             ></div>
           </div>
           <button className="next audio-btn">
@@ -74,7 +92,10 @@ export default function AudioPlayer() {
       </div>
       <div className={playlistStyle}>
         {playlist.map((song) => (
-          <button onClick={() => dispatch(changeSong())} key={song.title}>
+          <button
+            onClick={() => dispatch(changeSong(playlist.indexOf(song)))}
+            key={song.title}
+          >
             <h4 className="audioTitle">{song.title}</h4>
           </button>
         ))}
