@@ -23,7 +23,8 @@ export default function AudioPlayer() {
   );
   const dispatch = useDispatch();
 
-  console.log(progress);
+  // temp fix to warning for unused
+  console.log("progress: ", progress);
 
   useEffect(() => {
     dispatch(loadPlaylist());
