@@ -1,5 +1,6 @@
 import { faBars, faForward, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -15,6 +16,7 @@ export default function AudioPlayer() {
   const { playlist, currentSong, isPlaying, listOpen, progress } = useSelector(
     (state) => state.audioPlayer
   );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
