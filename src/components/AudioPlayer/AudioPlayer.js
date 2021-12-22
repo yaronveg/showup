@@ -22,7 +22,7 @@ export default function AudioPlayer() {
     (state) => state.audioPlayer
   );
   const dispatch = useDispatch();
-
+  console.log(listOpen, progress);
   useEffect(() => {
     dispatch(loadPlaylist());
   }, [dispatch]);
