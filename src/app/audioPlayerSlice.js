@@ -28,24 +28,26 @@ export const audioPlayerSlice = createSlice({
   name: "audioPlayer",
   initialState,
   reducers: {
+    changeProgress: (audioPlayerState, action) => {
+      audioPlayerState.progress = action.payload;
+    },
     loadPlaylist: (audioPlayerState, action) => {
       console.log("loading playlist...");
-    },
-    togglePlay: (audioPlayerState) => {
-      console.log("togglePlay");
-      audioPlayerState.isPlaying = !audioPlayerState.isPlaying;
     },
     changeSong: (audioPlayerState, action) => {
       audioPlayerState.currentSong = action.payload;
     },
+    togglePlay: (audioPlayerState) => {
+      audioPlayerState.isPlaying = !audioPlayerState.isPlaying;
+    },
     next: (audioPlayerState) => {
       audioPlayerState.currentSong++;
+      if (audioPlayerState.currentSong >= audioPlayerState.playlist.length) {
+        audioPlayerState.currentSong = 0;
+      }
     },
     togglePlaylist: (audioPlayerState) => {
       audioPlayerState.listOpen = !audioPlayerState.listOpen;
-    },
-    changeProgress: (audioPlayerState, action) => {
-      audioPlayerState.progress = action.payload;
     },
   },
 });

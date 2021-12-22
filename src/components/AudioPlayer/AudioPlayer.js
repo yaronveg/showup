@@ -22,10 +22,14 @@ export default function AudioPlayer() {
     (state) => state.audioPlayer
   );
   const dispatch = useDispatch();
-  console.log(listOpen, progress);
+
+  console.log(progress);
+
   useEffect(() => {
     dispatch(loadPlaylist());
   }, [dispatch]);
+
+  const playlistStyle = listOpen ? "music-playlist open" : "music-playlist";
 
   return (
     <div className="AudioPlayer">
@@ -67,7 +71,7 @@ export default function AudioPlayer() {
           </button>
         </div>
       </div>
-      <div className="music-playlist">
+      <div className={playlistStyle}>
         {playlist.map((song) => (
           <button onClick={() => dispatch(changeSong())} key={song.title}>
             <h4 className="audioTitle">{song.title}</h4>

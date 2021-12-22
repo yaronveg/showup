@@ -33,8 +33,10 @@
           transform: scale(0.95);
         }
       }
-      .left > * {
-        padding-right: 5px;
+      .left {
+        & > * {
+          padding-right: 5px;
+        }
       }
       .progress-container {
         cursor: pointer;
@@ -58,12 +60,14 @@
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
+    overflow: hidden;
 
-    height: 90px;
+    height: 0px;
     width: 85%;
     z-index: 5;
 
-    padding: 0.15rem 1rem;
+    padding: 0.15rem 1rem 0.7rem 1rem;
+    margin-top: -5px;
 
     border-radius: 0 0 15px 15px;
     background-color: map-get($colors, lighter);
