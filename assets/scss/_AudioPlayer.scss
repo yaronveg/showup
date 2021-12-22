@@ -28,6 +28,10 @@
 
         color: map-get($colors, accent);
         font-size: 0.8rem;
+        &:active {
+          color: lighten(map-get($colors, accent), 5);
+          transform: scale(0.95);
+        }
       }
       .left > * {
         padding-right: 5px;
@@ -55,7 +59,7 @@
     flex-flow: column;
     justify-content: flex-end;
 
-    height: 0px;
+    height: 90px;
     width: 85%;
     z-index: 5;
 

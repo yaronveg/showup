@@ -31,7 +31,8 @@ export const audioPlayerSlice = createSlice({
     loadPlaylist: (audioPlayerState, action) => {
       console.log("loading playlist...");
     },
-    togglPlay: (audioPlayerState) => {
+    togglePlay: (audioPlayerState) => {
+      console.log("togglePlay");
       audioPlayerState.isPlaying = !audioPlayerState.isPlaying;
     },
     changeSong: (audioPlayerState, action) => {

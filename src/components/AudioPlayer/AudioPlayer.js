@@ -1,4 +1,9 @@
-import { faBars, faForward, faPlay } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faForward,
+  faPause,
+  faPlay,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { useEffect } from "react";
@@ -16,36 +21,58 @@ export default function AudioPlayer() {
   const { playlist, currentSong, isPlaying, listOpen, progress } = useSelector(
     (state) => state.audioPlayer
   );
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadPlaylist());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="AudioPlayer">
       <div className="main">
-        <audio src={playlist[0].src} className="audio"></audio>
+        <audio src={playlist[currentSong].src} className="audio"></audio>
         <div className="navigation">
           <div className="left">
             <button className="library audio-btn">
-              <FontAwesomeIcon className="audioIcon" icon={faBars} />
+              <FontAwesomeIcon
+                className="audioIcon"
+                icon={faBars}
+                onClick={() => dispatch(togglePlaylist())}
+              />
             </button>
-            <button className="play audio-btn">
-              <FontAwesomeIcon className="audioIcon" icon={faPlay} />
+            <button
+              className="play audio-btn"
+              onClick={() => dispatch(togglePlay())}
+            >
+              {!isPlaying && (
+                <FontAwesomeIcon className="audioIcon" icon={faPlay} />
+              )}
+              {isPlaying && (
+                <FontAwesomeIcon className="audioIcon" icon={faPause} />
+              )}
             </button>
           </div>
           <div className="progress-container">
-            <div className="progress"></div>
+            <div
+              className="progress"
+              onClick={() => dispatch(changeProgress())}
+            ></div>
           </div>
           <button className="next audio-btn">
-            <FontAwesomeIcon className="audioIcon" icon={faForward} />
+            <FontAwesomeIcon
+              className="audioIcon"
+              icon={faForward}
+              onClick={() => dispatch(next())}
+            />
           </button>
         </div>
       </div>
       <div className="music-playlist">
-        <h4 className="audioTitle">{playlist[0].title}</h4>
+        {playlist.map((song) => (
+          <button onClick={() => dispatch(changeSong())} key={song.title}>
+            <h4 className="audioTitle">{song.title}</h4>
+          </button>
+        ))}
       </div>
     </div>
   );
