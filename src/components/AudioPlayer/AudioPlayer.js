@@ -15,29 +15,23 @@ import {
   togglePlaylist,
   changeProgress,
   loadPlaylist,
-  // setDuration,
+  setDuration,
 } from "../../app/audioPlayerSlice";
 
 export default function AudioPlayer() {
-  const { playlist, currentSong, isPlaying, listOpen, progress } = useSelector(
-    (state) => state.audioPlayer
-  );
+  const { playlist, currentSong, isPlaying, listOpen, progress, duration } =
+    useSelector((state) => state.audioPlayer);
   const dispatch = useDispatch();
 
   // references
   const audio = useRef();
-
   useEffect(() => {
-    console.log(audio.current.duration);
-  }, [audio?.current?.duration, audio?.current?.currentTime]);
+    dispatch(setDuration(audio.current.duration));
+  }, [audio?.current?.loadedmetadata, audio?.current?.readyState, dispatch]);
+
   useEffect(() => {
     dispatch(loadPlaylist());
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   const newDuration = audio.current.duration();
-  //   dispatch(setDuration(newDuration));
-  // }, [audio, dispatch, currentSong]);
 
   useEffect(() => {
     isPlaying ? audio.current.play() : audio.current.pause();
@@ -47,12 +41,14 @@ export default function AudioPlayer() {
 
   return (
     <div className="AudioPlayer">
+      <h1>{duration}</h1>
       <div className="main">
         <audio
           src={playlist[currentSong].src}
           className="audio"
           ref={audio}
         ></audio>
+
         <div className="navigation">
           <div className="left">
             <button className="library audio-btn">
