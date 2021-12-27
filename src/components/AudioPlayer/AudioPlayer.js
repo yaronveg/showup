@@ -21,15 +21,11 @@ import {
 export default function AudioPlayer() {
   const { playlist, currentSong, isPlaying, listOpen, progress, duration } =
     useSelector((state) => state.audioPlayer);
-  const playlistStyle = listOpen ? "music-playlist open" : "music-playlist";
   const dispatch = useDispatch();
-  // let progressStyle = 0;
+  const playlistStyle = listOpen ? "music-playlist open" : "music-playlist";
+
   // references
   const audio = useRef();
-
-  // useEffect(() => {
-  //   progressStyle = progress;
-  // }, [progress]);
 
   useEffect(() => {
     dispatch(loadPlaylist());
@@ -61,14 +57,14 @@ export default function AudioPlayer() {
           className="audio"
           ref={audio}
           onLoadedMetadata={(e) => dispatch(setDuration(e.target.duration))}
-          onTimeUpdate={(e) =>
+          onTimeUpdate={(e) => {
             dispatch(
               changeProgress({
                 currentTime: e.target.currentTime,
                 duration: e.target.duration,
               })
-            )
-          }
+            );
+          }}
         ></audio>
 
         <div className="navigation">
@@ -95,13 +91,17 @@ export default function AudioPlayer() {
           <div
             className="progress-container"
             onClick={(e) => {
-              dispatch(togglePlay());
+              if (isPlaying) dispatch(togglePlay());
               dispatch(
                 changeProgress({
-                  currentTime: e.target.clientX,
-                  duration: e.target.width,
+                  currentTime: e.clientX - e.target.getBoundingClientRect().x,
+                  duration: e.target.offsetWidth,
                 })
               );
+              console.log("event progress: ", progress);
+              console.log("event duration: ", duration);
+              audio.current.currentTime = (progress * duration) / 100;
+              // if (!isPlaying) dispatch(togglePlay());
             }}
           >
             <div className="progress" style={{ width: `${progress}%` }}></div>

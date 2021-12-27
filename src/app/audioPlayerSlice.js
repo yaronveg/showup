@@ -32,8 +32,8 @@ export const audioPlayerSlice = createSlice({
     changeProgress: (audioPlayerState, action) => {
       const { currentTime, duration } = action.payload;
       const newProgress = Math.floor((currentTime / duration) * 100);
-      console.log(newProgress);
       audioPlayerState.progress = newProgress;
+      console.log("slice progress: ", audioPlayerState.progress);
     },
     loadPlaylist: (audioPlayerState, action) => {
       console.log("loading playlist...");
