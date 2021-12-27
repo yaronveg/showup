@@ -51,7 +51,6 @@ export default function AudioPlayer() {
 
   return (
     <div className="AudioPlayer">
-      <h1>{secondsToTime(duration)}</h1>
       <div className="main">
         <div className="navigation">
           <div className="left">
@@ -113,14 +112,24 @@ export default function AudioPlayer() {
         </div>
       </div>
       <div className={playlistStyle}>
-        {playlist.map((song) => (
-          <button
-            onClick={() => dispatch(changeSong(playlist.indexOf(song)))}
-            key={song.title}
-          >
-            <h4 className="audioTitle">{song.title}</h4>
-          </button>
-        ))}
+        {playlist.map((song) => {
+          let classNames = "playlist-song";
+          if (song.title === playlist[currentSong].title) {
+            classNames += " current-song";
+          }
+          return (
+            <button
+              onClick={() => dispatch(changeSong(playlist.indexOf(song)))}
+              key={song.title}
+              className={classNames}
+            >
+              <h4 className="audioTitle">{song.title}</h4>
+            </button>
+          );
+        })}
+        {/* {document
+          .querySelector(`.playlist-song[key="${playlist[currentSong].title}"]`)
+          .classNames("playlist-song", "current-song")} */}
       </div>
     </div>
   );

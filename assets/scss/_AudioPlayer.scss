@@ -4,6 +4,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  & * {
+    transition: all 200ms linear;
+  }
+
   .main {
     height: 30px;
     width: 100%;
@@ -60,6 +65,7 @@
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
+    align-items: start;
     overflow: hidden;
 
     height: 0px;
@@ -76,6 +82,25 @@
 
     &.open {
       height: 100px;
+    }
+    .playlist-song {
+      cursor: pointer;
+      margin: 2px 0;
+      padding: 0 0.5rem;
+
+      background: none;
+      border: none;
+      outline: none;
+
+      color: map-get($colors, primary);
+      font-size: 1rem;
+      &:hover,
+      &:active {
+        color: map-get($colors, accent);
+      }
+    }
+    .current-song {
+      border-left: 0.3rem solid map-get($colors, accent);
     }
   }
 }
