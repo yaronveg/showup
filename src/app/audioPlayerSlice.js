@@ -29,16 +29,17 @@ export const audioPlayerSlice = createSlice({
   name: "audioPlayer",
   initialState,
   reducers: {
-    setDuration: (audioPlayerState, action) => {
-      audioPlayerState.duration = action.payload;
-    },
     changeProgress: (audioPlayerState, action) => {
       const { currentTime, duration } = action.payload;
-      const newProgress = (currentTime / duration) * 100;
+      const newProgress = Math.floor((currentTime / duration) * 100);
+      console.log(newProgress);
       audioPlayerState.progress = newProgress;
     },
     loadPlaylist: (audioPlayerState, action) => {
       console.log("loading playlist...");
+    },
+    setDuration: (audioPlayerState, action) => {
+      audioPlayerState.duration = action.payload;
     },
     changeSong: (audioPlayerState, action) => {
       audioPlayerState.isPlaying = true;

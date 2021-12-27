@@ -23,9 +23,13 @@ export default function AudioPlayer() {
     useSelector((state) => state.audioPlayer);
   const playlistStyle = listOpen ? "music-playlist open" : "music-playlist";
   const dispatch = useDispatch();
-
+  // let progressStyle = 0;
   // references
   const audio = useRef();
+
+  // useEffect(() => {
+  //   progressStyle = progress;
+  // }, [progress]);
 
   useEffect(() => {
     dispatch(loadPlaylist());
@@ -34,10 +38,6 @@ export default function AudioPlayer() {
   useEffect(() => {
     isPlaying ? audio.current.play() : audio.current.pause();
   }, [isPlaying, audio, currentSong]);
-
-  function loaded(e) {
-    dispatch(setDuration(audio.current.duration));
-  }
 
   function secondsToTime(secs) {
     let seconds = Math.floor(secs % 60);
@@ -60,7 +60,15 @@ export default function AudioPlayer() {
           src={playlist[currentSong].src}
           className="audio"
           ref={audio}
-          onLoadedMetadata={loaded}
+          onLoadedMetadata={(e) => dispatch(setDuration(e.target.duration))}
+          onTimeUpdate={(e) =>
+            dispatch(
+              changeProgress({
+                currentTime: e.target.currentTime,
+                duration: e.target.duration,
+              })
+            )
+          }
         ></audio>
 
         <div className="navigation">
@@ -84,12 +92,19 @@ export default function AudioPlayer() {
               )}
             </button>
           </div>
-          <div className="progress-container">
-            <div
-              className="progress"
-              onClick={() => dispatch(changeProgress())}
-              style={{ width: `${progress}%` }}
-            ></div>
+          <div
+            className="progress-container"
+            onClick={(e) => {
+              dispatch(togglePlay());
+              dispatch(
+                changeProgress({
+                  currentTime: e.target.clientX,
+                  duration: e.target.width,
+                })
+              );
+            }}
+          >
+            <div className="progress" style={{ width: `${progress}%` }}></div>
           </div>
           <button className="next audio-btn">
             <FontAwesomeIcon
