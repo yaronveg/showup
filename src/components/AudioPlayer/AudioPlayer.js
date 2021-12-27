@@ -36,6 +36,7 @@ export default function AudioPlayer() {
     isPlaying ? audio.current.play() : audio.current.pause();
   }, [isPlaying, audio, currentSong]);
 
+  /*
   function secondsToTime(secs) {
     let seconds = Math.floor(secs % 60);
     let minutes = Math.floor(seconds / 60);
@@ -48,6 +49,7 @@ export default function AudioPlayer() {
     }
     return minutes + ":" + seconds;
   }
+  */
 
   return (
     <div className="AudioPlayer">
