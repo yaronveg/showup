@@ -33,7 +33,10 @@ export const audioPlayerSlice = createSlice({
       const { currentTime, duration } = action.payload;
       const newProgress = Math.floor((currentTime / duration) * 100);
       audioPlayerState.progress = newProgress;
-      console.log("slice progress: ", audioPlayerState.progress);
+    },
+    updateProgress: (audioPlayerState, action) => {
+      const newProgress = action.payload;
+      audioPlayerState.progress = newProgress;
     },
     loadPlaylist: (audioPlayerState, action) => {
       console.log("loading playlist...");
@@ -69,6 +72,7 @@ export const {
   next,
   togglePlaylist,
   changeProgress,
+  updateProgress,
 } = audioPlayerSlice.actions;
 
 export default audioPlayerSlice.reducer;

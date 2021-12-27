@@ -16,6 +16,7 @@ import {
   changeProgress,
   loadPlaylist,
   setDuration,
+  updateProgress,
 } from "../../app/audioPlayerSlice";
 
 export default function AudioPlayer() {
@@ -52,21 +53,6 @@ export default function AudioPlayer() {
     <div className="AudioPlayer">
       <h1>{secondsToTime(duration)}</h1>
       <div className="main">
-        <audio
-          src={playlist[currentSong].src}
-          className="audio"
-          ref={audio}
-          onLoadedMetadata={(e) => dispatch(setDuration(e.target.duration))}
-          onTimeUpdate={(e) => {
-            dispatch(
-              changeProgress({
-                currentTime: e.target.currentTime,
-                duration: e.target.duration,
-              })
-            );
-          }}
-        ></audio>
-
         <div className="navigation">
           <div className="left">
             <button className="library audio-btn">
@@ -91,19 +77,30 @@ export default function AudioPlayer() {
           <div
             className="progress-container"
             onClick={(e) => {
-              if (isPlaying) dispatch(togglePlay());
-              dispatch(
-                changeProgress({
-                  currentTime: e.clientX - e.target.getBoundingClientRect().x,
-                  duration: e.target.offsetWidth,
-                })
+              const newProgress = Math.floor(
+                ((e.clientX - e.target.getBoundingClientRect().x) /
+                  e.target.offsetWidth) *
+                  100
               );
-              console.log("event progress: ", progress);
-              console.log("event duration: ", duration);
-              audio.current.currentTime = (progress * duration) / 100;
-              // if (!isPlaying) dispatch(togglePlay());
+              dispatch(updateProgress(newProgress));
+              audio.current.currentTime = (newProgress * duration) / 100;
+              if (!isPlaying) dispatch(togglePlay());
             }}
           >
+            <audio
+              src={playlist[currentSong].src}
+              className="audio"
+              ref={audio}
+              onLoadedMetadata={(e) => dispatch(setDuration(e.target.duration))}
+              onTimeUpdate={(e) => {
+                dispatch(
+                  changeProgress({
+                    currentTime: e.target.currentTime,
+                    duration: e.target.duration,
+                  })
+                );
+              }}
+            ></audio>
             <div className="progress" style={{ width: `${progress}%` }}></div>
           </div>
           <button className="next audio-btn">
