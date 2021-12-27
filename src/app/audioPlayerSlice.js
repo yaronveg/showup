@@ -30,7 +30,6 @@ export const audioPlayerSlice = createSlice({
   initialState,
   reducers: {
     setDuration: (audioPlayerState, action) => {
-      console.log(action.payload);
       audioPlayerState.duration = action.payload;
     },
     changeProgress: (audioPlayerState, action) => {
