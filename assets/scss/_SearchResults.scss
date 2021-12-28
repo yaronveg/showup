@@ -19,9 +19,6 @@
       border-bottom: 2px solid map-get($colors, light);
 
       button {
-        outline: none;
-        border: none;
-        cursor: pointer;
         margin: 0;
         margin-bottom: 2px;
 
@@ -38,6 +35,56 @@
         }
         &.active {
           border-bottom: 3px solid map-get($colors, primary);
+        }
+      }
+    }
+    .filters {
+      padding: 20px;
+      button {
+        display: block;
+      }
+      .filter {
+        &-title {
+          display: flex;
+          width: 100%;
+          align-items: center;
+          font-size: 1.1rem;
+
+          color: map-get($colors, accent);
+          margin-bottom: 7px;
+
+          span {
+            font-weight: 600;
+          }
+          .title-icon {
+            color: map-get($colors, darker);
+            margin-right: 10px;
+          }
+        }
+
+        &-drawer {
+          margin-left: 40px;
+        }
+        &-samples {
+          button {
+            display: inline;
+            &.filter-btn {
+              width: fit-content;
+            }
+          }
+        }
+
+        &-btn {
+          width: 100%;
+          padding: 0.2rem 0.5rem;
+          margin-bottom: 7px;
+
+          border-radius: 7px;
+          background: map-get($colors, light);
+
+          color: map-get($colors, accent);
+          text-align: left;
+          font-weight: bold;
         }
       }
     }

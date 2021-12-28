@@ -34,6 +34,13 @@ img {
 strong {
   font-weight: 800;
 }
+button {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: map-get($colors, accent);
+}
 
 body {
   font-size: 1rem;
