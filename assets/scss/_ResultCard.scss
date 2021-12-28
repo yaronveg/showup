@@ -1,0 +1,44 @@
+.ResultCard {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  align-items: center;
+
+  margin: 1rem;
+  padding: 1rem;
+
+  border: solid 3px map-get($colors, light);
+  border-radius: 8px 30px 8px 8px;
+
+  .ProfilePic {
+    transform: scale(0.9);
+    margin-right: 10px;
+  }
+
+  .card-main {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    margin-right: 20px;
+    a {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+  .AudioPlayer {
+    flex: 1.4;
+  }
+  .chips {
+    flex: 1;
+    // height: 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    transform: scale(0.85);
+    & * {
+      display: inline-block;
+    }
+  }
+}

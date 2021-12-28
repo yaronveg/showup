@@ -1,0 +1,48 @@
+.SearchResults {
+  &.container {
+    max-width: 1000px;
+  }
+  display: flex;
+  .area-side {
+    height: 100%;
+    width: 240px;
+
+    height: 100vh;
+    overflow: hidden;
+
+    background: map-get($colors, lighter);
+
+    .main-cat {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      border-bottom: 2px solid map-get($colors, light);
+
+      button {
+        outline: none;
+        border: none;
+        cursor: pointer;
+        margin: 0;
+        margin-bottom: 2px;
+
+        width: 100%;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        background: none;
+
+        font-size: 1rem;
+        color: map-get($colors, primary);
+        &:hover {
+          background-color: lighten(map-get($colors, lighter), 1.7%);
+        }
+        &.active {
+          border-bottom: 3px solid map-get($colors, primary);
+        }
+      }
+    }
+  }
+  .area-results {
+    flex: 5;
+  }
+}

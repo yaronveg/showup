@@ -1,0 +1,20 @@
+.Connect {
+  button {
+    padding: 0.2rem 0.5rem;
+
+    background: linear-gradient(
+      map-get($colors, accent),
+      map-get($colors, primary)
+    );
+    border-radius: 15px;
+    border: none;
+    outline: none;
+
+    color: map-get($colors, white);
+    cursor: pointer;
+
+    &:hover {
+      background: lighten(map-get($colors, accent), 5%);
+    }
+  }
+}

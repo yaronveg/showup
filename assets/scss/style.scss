@@ -4,6 +4,7 @@
 @import "forms";
 @import "infoMinimal";
 @import "AudioPlayer";
+@import "Connect";
 
 * {
   box-sizing: border-box;
@@ -49,3 +50,5 @@ body {
 @import "ProfilePic";
 @import "UserProfile";
 @import "TimeLine";
+@import "SearchResults";
+@import "ResultCard";
