@@ -64,13 +64,11 @@
 
         &-drawer {
           margin-left: 40px;
-        }
-        &-samples {
-          button {
-            display: inline;
-            &.filter-btn {
-              width: fit-content;
-            }
+          overflow: hidden;
+          transition: max-height linear 500ms;
+
+          &.closed {
+            display: none;
           }
         }
 
@@ -85,6 +83,15 @@
           color: map-get($colors, accent);
           text-align: left;
           font-weight: bold;
+
+          &:hover {
+            background: map-get($colors, accent);
+            color: map-get($colors, white);
+          }
+          &.selected {
+            background: map-get($colors, primary);
+            color: map-get($colors, white);
+          }
         }
       }
     }

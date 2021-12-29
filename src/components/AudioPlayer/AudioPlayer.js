@@ -19,9 +19,10 @@ import {
   updateProgress,
 } from "../../app/audioPlayerSlice";
 
-export default function AudioPlayer() {
-  const { playlist, currentSong, isPlaying, listOpen, progress, duration } =
-    useSelector((state) => state.audioPlayer);
+export default function AudioPlayer({ playlist }) {
+  const { currentSong, isPlaying, listOpen, progress, duration } = useSelector(
+    (state) => state.audioPlayer
+  );
   const dispatch = useDispatch();
   const playlistStyle = listOpen ? "music-playlist open" : "music-playlist";
 
@@ -35,21 +36,6 @@ export default function AudioPlayer() {
   useEffect(() => {
     isPlaying ? audio.current.play() : audio.current.pause();
   }, [isPlaying, audio, currentSong]);
-
-  /*
-  function secondsToTime(secs) {
-    let seconds = Math.floor(secs % 60);
-    let minutes = Math.floor(seconds / 60);
-
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-    if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-    return minutes + ":" + seconds;
-  }
-  */
 
   return (
     <div className="AudioPlayer">
@@ -108,7 +94,7 @@ export default function AudioPlayer() {
             <FontAwesomeIcon
               className="audioIcon"
               icon={faForward}
-              onClick={() => dispatch(next())}
+              onClick={() => dispatch(next(playlist.length))}
             />
           </button>
         </div>
@@ -129,9 +115,6 @@ export default function AudioPlayer() {
             </button>
           );
         })}
-        {/* {document
-          .querySelector(`.playlist-song[key="${playlist[currentSong].title}"]`)
-          .classNames("playlist-song", "current-song")} */}
       </div>
     </div>
   );

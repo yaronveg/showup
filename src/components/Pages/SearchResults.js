@@ -2,8 +2,19 @@ import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import ResultCard from "../ResultCard/ResultCard";
+import {
+  toggleOpen,
+  selectFilter,
+  deselectFilter,
+} from "../../app/filtersSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SearchResults() {
+  const { selectedFilters, filtersList } = useSelector(
+    (state) => state.filters
+  );
+  const dispatch = useDispatch();
+  console.log(selectedFilters);
   return (
     <div className="SearchResults container">
       <div className="area-side">
@@ -13,33 +24,47 @@ export default function SearchResults() {
           <button>Gigs</button>
         </div>
         <div className="filters">
-          <div className="filter instruments">
-            <button className="filter-title">
-              <FontAwesomeIcon className="title-icon" icon={faAngleDown} />
-              <span>Instruments</span>
-            </button>
-            <div className="filter-drawer">
-              <button className="filter-btn">Bass (electric)</button>
-              <button className="filter-btn">Guitar</button>
-              <button className="filter-btn">Keynoard</button>
-              <button className="filter-btn">Piano</button>
-              <button className="filter-btn">Violin</button>
-              <button className="filter-btn">Drums</button>
-            </div>
-          </div>
-          <div className="filter genres">
-            <button className="filter-title">
-              <FontAwesomeIcon className="title-icon" icon={faAngleRight} />
-              <span>Genres</span>
-            </button>
-            <div className="filter-samples">
-              <button className="filter-btn">Rock</button>
-              <button className="filter-btn">Alternative</button>
-              <button className="filter-btn">Middle-Eastern</button>
-              <button className="filter-btn">Pop</button>
-              <button className="filter-btn">Folk</button>
-            </div>
-          </div>
+          {filtersList.map((filter) => {
+            const icon = filter.isOpen ? faAngleDown : faAngleRight;
+            const drawerHeight = filter.isOpen ? "200vh" : "0px";
+            return (
+              <div className={("filter ", filter.name)} key={filter.name}>
+                <button
+                  className="filter-title"
+                  onClick={() => dispatch(toggleOpen(filter.name))}
+                >
+                  <FontAwesomeIcon className="title-icon" icon={icon} />
+                  <span>{filter.name}</span>
+                </button>
+                <div
+                  className="filter-drawer"
+                  style={{ maxHeight: `${drawerHeight}` }}
+                >
+                  {filter.options.map((option) => {
+                    let optionClass = "filter-btn";
+                    if (selectedFilters.includes(option)) {
+                      optionClass += " selected";
+                    }
+                    return (
+                      <button
+                        className={optionClass}
+                        key={option}
+                        onClick={(e) => {
+                          if (selectedFilters.includes(option)) {
+                            dispatch(deselectFilter(option));
+                          } else {
+                            dispatch(selectFilter(option));
+                          }
+                        }}
+                      >
+                        {option}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="area-results">

@@ -8,95 +8,123 @@ import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import TimeLine from "../TimeLine/TimeLine";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
 
-const skills = ["Saxophone", "Guitar", "Bass", "Piano", "Drums"];
-const genres = ["Rock", "Alt", "Acoustic", "Pop", "Alternative"];
-const galleryPictures = [
-  "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/75424765_2564581346971015_1892483167529467904_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=xFlrDOe5rw0AX8azPXy&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT_2dumOPxlPfRYhvWqQFRLCaXAy6GAvkznOXhZzRL-tRw&oe=61E39B59",
-  "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/76646823_2564579766971173_4628760476229042176_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=ZdIEc5yNwmQAX_hVEJ_&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT90EMLnNWajE7iDv5uztobbu9SCzVHKdQrWZmtabruxow&oe=61E240CF",
-  "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/119950836_1250680441932985_1241221853795240522_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=y2iIkIrPuIwAX_3AMVG&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT_r3OQocTW-bhSzFErCY7XgTzJ3u1XnOs-Fx6hlYziwaQ&oe=61E59993",
-  "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/75250913_2564580826971067_7237483063033200640_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=chPib9lSCaEAX9OtVN-&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT8o0jyP0zc2TGArqLilpQoLQ4vXhfUC-7RZkpUPptpHiQ&oe=61E35A42",
-];
-const timestamps = [
+const users = [
   {
-    year: 2021,
-    stamps: [
+    firstName: "Yaron",
+    lastName: "Veg",
+    profilePicture:
+      "https://scontent-frt3-1.xx.fbcdn.net/v/t1.6435-9/132433140_10221371109080038_916252037937717771_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=RL-ee5Kw7nUAX8vxlZC&_nc_ht=scontent-frt3-1.xx&oh=36e2345297e8dd8f94c24bc8ac4eaaf1&oe=61DDDAD8",
+    coverPicture:
+      "https://scontent-frt3-2.xx.fbcdn.net/v/t1.6435-9/119903473_10220680526935916_899098172998622829_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=e3f864&_nc_ohc=G9t_6V1_w2YAX-dm9Uu&tn=pn0p2CMwUbYckEOh&_nc_ht=scontent-frt3-2.xx&oh=36954f5b10f570af5d7ffdd9914a9f73&oe=61DD3618",
+    bio: `I'm a starting musician from Karney Shomron. Looking for a band to preform with my original materials.`,
+    skills: ["Saxophone", "Guitar", "Bass", "Piano", "Drums"],
+    genres: ["Rock", "Alt", "Acoustic", "Pop", "Alternative"],
+    galleryPictures: [
+      "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/75424765_2564581346971015_1892483167529467904_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=xFlrDOe5rw0AX8azPXy&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT_2dumOPxlPfRYhvWqQFRLCaXAy6GAvkznOXhZzRL-tRw&oe=61E39B59",
+      "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/76646823_2564579766971173_4628760476229042176_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=ZdIEc5yNwmQAX_hVEJ_&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT90EMLnNWajE7iDv5uztobbu9SCzVHKdQrWZmtabruxow&oe=61E240CF",
+      "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/119950836_1250680441932985_1241221853795240522_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=y2iIkIrPuIwAX_3AMVG&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT_r3OQocTW-bhSzFErCY7XgTzJ3u1XnOs-Fx6hlYziwaQ&oe=61E59993",
+      "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/75250913_2564580826971067_7237483063033200640_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=chPib9lSCaEAX9OtVN-&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT8o0jyP0zc2TGArqLilpQoLQ4vXhfUC-7RZkpUPptpHiQ&oe=61E35A42",
+    ],
+    timestamps: [
       {
-        id: 1,
-        date: "Jun 27",
-        type: "Playing",
-        detail: "bass",
-        text: "Yinon Bar",
-        subText: null,
-        subType: null,
+        year: 2021,
+        stamps: [
+          {
+            id: 1,
+            date: "Jun 27",
+            type: "Playing",
+            detail: "bass",
+            text: "Yinon Bar",
+            subText: null,
+            subType: null,
+          },
+          {
+            id: 2,
+            date: "Apr 12",
+            type: "Release",
+            detail: "single",
+            text: '"Im Ata Ohev Oti"',
+            subText: "Yahel Doron",
+            subType: "produced",
+          },
+        ],
       },
       {
-        id: 2,
-        date: "Apr 12",
-        type: "Release",
-        detail: "single",
-        text: '"Im Ata Ohev Oti"',
-        subText: "Yahel Doron",
-        subType: "produced",
+        year: 2020,
+        stamps: [
+          {
+            id: 3,
+            date: "Sep 04",
+            type: "show",
+            detail: "Single debut",
+            text: "Zappa TLV",
+            subText: null,
+            subType: null,
+          },
+        ],
+      },
+      {
+        year: 2019,
+        stamps: [
+          {
+            id: 4,
+            date: "Apr 15",
+            type: "Played",
+            detail: "keyboard",
+            text: "Miriam Weiss",
+            subText: null,
+            subType: null,
+          },
+          {
+            id: 5,
+            date: "Feb 21",
+            type: "Skill",
+            detail: "drums",
+            text: null,
+            subText: null,
+            subType: null,
+          },
+          {
+            id: 6,
+            date: "Feb 14",
+            type: "Connection",
+            detail: null,
+            text: "Shimi Weiss",
+            subText: null,
+            subType: null,
+          },
+        ],
+      },
+      {
+        year: 2018,
+        stamps: [
+          {
+            id: 7,
+            date: "Aug 15",
+            type: "Skill",
+            detail: "bass guitar",
+            text: null,
+            subText: null,
+            subType: null,
+          },
+        ],
       },
     ],
-  },
-  {
-    year: 2020,
-    stamps: [
+    playlist: [
       {
-        id: 3,
-        date: "Sep 04",
-        type: "show",
-        detail: "Single debut",
-        text: "Zappa TLV",
-        subText: null,
-        subType: null,
-      },
-    ],
-  },
-  {
-    year: 2019,
-    stamps: [
-      {
-        id: 4,
-        date: "Apr 15",
-        type: "Played",
-        detail: "keyboard",
-        text: "Miriam Weiss",
-        subText: null,
-        subType: null,
+        src: "/aud1.mp3",
+        title: "song 1",
+        duration: 0,
       },
       {
-        id: 5,
-        date: "Feb 21",
-        type: "Skill",
-        detail: "drums",
-        text: null,
-        subText: null,
-        subType: null,
+        src: "/aud2.mp3",
+        title: "song 2",
+        duration: 0,
       },
       {
-        id: 6,
-        date: "Feb 14",
-        type: "Connection",
-        detail: null,
-        text: "Shimi Weiss",
-        subText: null,
-        subType: null,
-      },
-    ],
-  },
-  {
-    year: 2018,
-    stamps: [
-      {
-        id: 7,
-        date: "Aug 15",
-        type: "Skill",
-        detail: "bass guitar",
-        text: null,
-        subText: null,
-        subType: null,
+        src: "/aud3.mp3",
+        title: "song 3",
+        duration: 0,
       },
     ],
   },
@@ -108,7 +136,9 @@ export default function UserProfile() {
       <div className="container">
         <div className="cover-container">
           <img
-            src="https://scontent-frt3-2.xx.fbcdn.net/v/t1.6435-9/119903473_10220680526935916_899098172998622829_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=e3f864&_nc_ohc=G9t_6V1_w2YAX-dm9Uu&tn=pn0p2CMwUbYckEOh&_nc_ht=scontent-frt3-2.xx&oh=36954f5b10f570af5d7ffdd9914a9f73&oe=61DD3618"
+            src={
+              users.filter((user) => user.firstName === "Yaron")[0].coverPicture
+            }
             alt="COVER-ERR"
             className="cover-pic"
           />
@@ -119,21 +149,52 @@ export default function UserProfile() {
               <div className="side-col">
                 <div className="side-top">
                   <div className="profile-pic">
-                    <ProfilePic />
+                    <ProfilePic
+                      src={
+                        users.filter((user) => user.firstName === "Yaron")[0]
+                          .profilePicture
+                      }
+                    />
                   </div>
-                  <h4 className="profileName">Yaron Veg</h4>
+                  <h4 className="profileName">
+                    {users.filter((user) => user.firstName === "Yaron")[0]
+                      .firstName +
+                      " " +
+                      users.filter((user) => user.firstName === "Yaron")[0]
+                        .lastName}
+                  </h4>
                   <UserLocation />
                   <ConnectionCount />
-                  <AudioPlayer />
+                  <AudioPlayer
+                    playlist={
+                      users.filter((user) => user.firstName === "Yaron")[0]
+                        .playlist
+                    }
+                  />
                   <div className="profileChips">
-                    <Chips chips={skills} />
+                    <Chips
+                      chips={
+                        users.filter((user) => user.firstName === "Yaron")[0]
+                          .skills
+                      }
+                    />
                   </div>
                   <div className="profileChips">
-                    <Chips chips={genres} />
+                    <Chips
+                      chips={
+                        users.filter((user) => user.firstName === "Yaron")[0]
+                          .genres
+                      }
+                    />
                   </div>
                 </div>
                 <div className="side-bot">
-                  <ProfileGallery galleryPictures={galleryPictures} />
+                  <ProfileGallery
+                    galleryPictures={
+                      users.filter((user) => user.firstName === "Yaron")[0]
+                        .galleryPictures
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -142,11 +203,14 @@ export default function UserProfile() {
             <div className="profileBio">
               <FontAwesomeIcon className="bioIcon" icon={faFileAlt} />
               <p className="bioText">
-                I'm a starting musician from Karney Shomron. Looking for a band
-                to preform with my original materials.
+                {users.filter((user) => user.firstName === "Yaron")[0].bio}
               </p>
             </div>
-            <TimeLine timestamps={timestamps} />
+            <TimeLine
+              timestamps={
+                users.filter((user) => user.firstName === "Yaron")[0].timestamps
+              }
+            />
           </div>
         </div>
       </div>
