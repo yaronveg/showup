@@ -61,44 +61,57 @@ app.get(!`/api${"*"}` && "*", (req, res) => {
 ////////////// C.R.U.D - CREATE, READ, UPDATE, DELETE //////////////
 
 // READ //
-app.get("/api/products", async (req, res) => {
-  const term = req.body.term;
-  let products = await User.find();
+app.get("/api/users", async (req, res) => {
+  // const term = req.body.term;
+  let users = await User.find();
   if (req.query.term) {
-    const { term } = req.query;
-    products = products.filter(
-      (product) =>
-        product.title.toLowerCase().includes(term.toLowerCase()) ||
-        product.description.toLowerCase().includes(term.toLowerCase()) ||
-        product.category.toLowerCase().includes(term.toLowerCase())
+    const { term } = req.query.toLowerCase();
+
+    users = users.filter(
+      (user) =>
+        user.fullName().toLowerCase().includes(term) ||
+        user.bio.toLowerCase().includes(term) ||
+        user.skills.find((skill) => skill.toLowerCase().includes(term)) ||
+        user.genres.find((genre) => genre.toLowerCase().includes(term)) ||
+        user.timestamps.find((year) =>
+          year.stamps.find(
+            (stamp) =>
+              stamp.date.includes(term) ||
+              stamp.type.includes(term) ||
+              stamp.detail.includes(term) ||
+              stamp.text.includes(term) ||
+              stamp.subText.includes(term) ||
+              stamp.subType.includes(term)
+          )
+        ) ||
+        user.playlist.find((track) => track.title.includes(term))
     );
   }
-  res.send(products);
+  res.send(users);
 });
 
-// READ product //
-app.get("/api/products/:id", async (req, res) => {
+// READ user //
+app.get("/api/users/:id", async (req, res) => {
   const { id } = req.params;
   res.send(await User.findById(id));
 });
 
-// CREATE //
-app.post("/api/products", async (req, res) => {
-  const { title, price, description, category, image, rating } = req.body;
-  const newProduct = {
-    title,
-    price,
-    description,
-    category,
-    image,
-    rating,
+// CREATE User //
+app.post("/api/users", async (req, res) => {
+  const { firstName, lastName, profilePicture, coverPicture } = req.body;
+  const newUser = {
+    firstName,
+    lastName,
+    profilePicture,
+    coverPicture,
   };
-  const newProductDocument = new User(newProduct).save();
-  res.send(newProduct);
+  const newUserDocument = new User(newUser).save();
+  console.log("saved to DB: ", newUserDocument);
+  res.send(newUser);
 });
 
 // UPDATE //
-app.put("/api/products/:id", async (req, res) => {
+app.put("/api/users/:id", async (req, res) => {
   const { id } = req.params;
   const body = req.body;
 
@@ -107,7 +120,7 @@ app.put("/api/products/:id", async (req, res) => {
 });
 
 // DELETE //
-app.delete("/api/products/:id", async (req, res) => {
+app.delete("/api/users/:id", async (req, res) => {
   const { id } = req.params;
   const deleted = await User.findByIdAndDelete(id);
   res.send(deleted);
@@ -120,12 +133,5 @@ mongoose.connect(
   `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
   async (err) => {
     err ? console.log(err) : app.listen(process.env.PORT || 8000);
-    const dbProducts = await User.find();
-    if (!dbProducts.length) {
-      const data = await fetch("https://fakestoreapi.com/products");
-      const products = await data.json();
-      const newIds = products.map((product) => ({ ...product, id: undefined }));
-      User.insertMany(newIds);
-    }
   }
 );
