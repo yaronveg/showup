@@ -6,7 +6,10 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
+
+// makes sure all rerquest going through body with JSON will parse:
 app.use(express.json());
+
 // app.use(express.static(`client/build`));
 
 // refer to a scheme and define.
@@ -62,11 +65,11 @@ app.get(!`/api${"*"}` && "*", (req, res) => {
 
 // READ //
 app.get("/api/users", async (req, res) => {
-  // const term = req.body.term;
   let users = await User.find();
-  if (req.query.term) {
-    const { term } = req.query.toLowerCase();
 
+  // const term = req.body.term;
+  const { term } = req.query.toLowerCase();
+  if (term) {
     users = users.filter(
       (user) =>
         user.fullName().toLowerCase().includes(term) ||
@@ -87,6 +90,7 @@ app.get("/api/users", async (req, res) => {
         user.playlist.find((track) => track.title.includes(term))
     );
   }
+
   res.send(users);
 });
 
