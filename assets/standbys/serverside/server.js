@@ -1,5 +1,5 @@
 import express from "express";
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
@@ -12,9 +12,11 @@ app.use(express.json());
 
 // app.use(express.static(`client/build`));
 
+//USER SCHEMA START
 // refer to a scheme and define.
 const userSchema = new mongoose.Schema({
   userId: String,
+  email: String,
   firstName: String,
   lastName: String,
   profilePicture: String,
@@ -40,21 +42,47 @@ const userSchema = new mongoose.Schema({
     },
   ],
   playlist: [{ src: String, title: String, duration: Number }],
-  connections: [],
+  connections: [
+    { id: String, status: String, timeUpdated: Date, timeCrated: Date },
+  ],
 });
 
 // methods
 userSchema.methods.fullName = function fullName() {
-  const name = this.firstName + " " + this.lastName;
-  return name;
+  return this.firstName + " " + this.lastName;
 };
-userSchema.methods.connectionSum = function connectionSum() {
-  const total = this.connections.length;
-  return total;
+userSchema.methods.playlistTitles = function playlistTitles() {
+  return this.playlist.map((song) => song.title);
+};
+userSchema.methods.connectionsList = function connectionsList() {
+  return this.connections
+    .filter((connection) => connection.status === "connected")
+    .map((connection) => connection.id);
+};
+userSchema.methods.connectionCount = function connectionCount() {
+  return this.connections().length;
+};
+userSchema.methods.pending = function pending() {
+  return this.connections
+    .filter((connection) => connection.status === "pending")
+    .map((connection) => connection.id);
+};
+userSchema.methods.pendingCount = function pendingCount() {
+  return this.pending().length;
+};
+userSchema.methods.requests = function requests() {
+  return this.connections
+    .filter((connection) => connection.status === "requests")
+    .map((connection) => connection.id);
+};
+userSchema.methods.requestsCount = function requestsCount() {
+  return this.requests().length;
 };
 
 // compile schema into a Model.
 const User = mongoose.model("User", userSchema);
+
+//USER SCHEMA END
 
 // a "catchall" handler for any request that doesn't match the C.R.U.D. - will send back React's Index.html file.
 app.get(!`/api${"*"}` && "*", (req, res) => {
@@ -102,12 +130,11 @@ app.get("/api/users/:id", async (req, res) => {
 
 // CREATE User //
 app.post("/api/users", async (req, res) => {
-  const { firstName, lastName, profilePicture, coverPicture } = req.body;
+  const { firstName, lastName, email } = req.body;
   const newUser = {
     firstName,
     lastName,
-    profilePicture,
-    coverPicture,
+    email,
   };
   const newUserDocument = new User(newUser).save();
   console.log("saved to DB: ", newUserDocument);
@@ -130,12 +157,10 @@ app.delete("/api/users/:id", async (req, res) => {
   res.send(deleted);
 });
 
-const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
-
-// mongoose.connect("mongodb://localhost:27017/test", async (err) => {
-mongoose.connect(
-  `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
-  async (err) => {
-    err ? console.log(err) : app.listen(process.env.PORT || 8000);
-  }
-);
+// const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
+// mongoose.connect(
+//   `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
+//   async (err) => {
+mongoose.connect("mongodb://localhost:27017/showUpLocal", async (err) => {
+  err ? console.log(err) : app.listen(process.env.PORT || 8000);
+});
