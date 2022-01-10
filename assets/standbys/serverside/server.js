@@ -96,26 +96,27 @@ app.get("/api/users", async (req, res) => {
   let users = await User.find();
 
   // const term = req.body.term;
-  const { term } = req.query.toLowerCase();
+  const { term } = req.query;
   if (term) {
+    const termLower = term.toLowerCase();
     users = users.filter(
       (user) =>
-        user.fullName().toLowerCase().includes(term) ||
-        user.bio.toLowerCase().includes(term) ||
-        user.skills.find((skill) => skill.toLowerCase().includes(term)) ||
-        user.genres.find((genre) => genre.toLowerCase().includes(term)) ||
+        user.fullName().toLowerCase().includes(termLower) ||
+        user.bio.toLowerCase().includes(termLower) ||
+        user.skills.find((skill) => skill.toLowerCase().includes(termLower)) ||
+        user.genres.find((genre) => genre.toLowerCase().includes(termLower)) ||
         user.timestamps.find((year) =>
           year.stamps.find(
             (stamp) =>
-              stamp.date.includes(term) ||
-              stamp.type.includes(term) ||
-              stamp.detail.includes(term) ||
-              stamp.text.includes(term) ||
-              stamp.subText.includes(term) ||
-              stamp.subType.includes(term)
+              stamp.date.includes(termLower) ||
+              stamp.type.includes(termLower) ||
+              stamp.detail.includes(termLower) ||
+              stamp.text.includes(termLower) ||
+              stamp.subText.includes(termLower) ||
+              stamp.subType.includes(termLower)
           )
         ) ||
-        user.playlist.find((track) => track.title.includes(term))
+        user.playlist.find((track) => track.title.includes(termLower))
     );
   }
 
@@ -131,6 +132,7 @@ app.get("/api/users/:id", async (req, res) => {
 // CREATE User //
 app.post("/api/users", async (req, res) => {
   const { firstName, lastName, email } = req.body;
+
   const newUser = {
     firstName,
     lastName,
@@ -145,7 +147,8 @@ app.post("/api/users", async (req, res) => {
 app.put("/api/users/:id", async (req, res) => {
   const { id } = req.params;
   const body = req.body;
-
+  const user = await User.findById(id);
+  console.log(user);
   const updated = await User.findByIdAndUpdate(id, body);
   res.send(updated);
 });
