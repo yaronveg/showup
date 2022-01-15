@@ -102,11 +102,11 @@ app.get("/api/users", async (req, res) => {
     users = users.filter(
       (user) =>
         user.fullName().toLowerCase().includes(termLower) ||
-        user.bio.toLowerCase().includes(termLower) ||
-        user.skills.find((skill) => skill.toLowerCase().includes(termLower)) ||
-        user.genres.find((genre) => genre.toLowerCase().includes(termLower)) ||
-        user.timestamps.find((year) =>
-          year.stamps.find(
+        (user.bio && user.bio.toLowerCase().includes(termLower)) ||
+        user.skills.some((skill) => skill.toLowerCase().includes(termLower)) ||
+        user.genres.some((genre) => genre.toLowerCase().includes(termLower)) ||
+        user.timestamps.some((year) =>
+          year.stamps.some(
             (stamp) =>
               stamp.date.includes(termLower) ||
               stamp.type.includes(termLower) ||
