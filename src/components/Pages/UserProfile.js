@@ -13,17 +13,17 @@ const users = [
     firstName: "Yaron",
     lastName: "Veg",
     profilePicture:
-      "https://scontent-frt3-1.xx.fbcdn.net/v/t1.6435-9/132433140_10221371109080038_916252037937717771_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=RL-ee5Kw7nUAX8vxlZC&_nc_ht=scontent-frt3-1.xx&oh=36e2345297e8dd8f94c24bc8ac4eaaf1&oe=61DDDAD8",
+      "https://scontent.ftlv18-1.fna.fbcdn.net/v/t1.6435-9/30703931_10213905959975976_6380633123226386432_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=174925&_nc_ohc=TIZP9kpyE84AX8Kh-so&_nc_ht=scontent.ftlv18-1.fna&oh=00_AT8vniqUZrz1P7tRq839ZxnhiOi-p1xRJDe2jUjk95aasA&oe=620D7344",
     coverPicture:
-      "https://scontent-frt3-2.xx.fbcdn.net/v/t1.6435-9/119903473_10220680526935916_899098172998622829_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=e3f864&_nc_ohc=G9t_6V1_w2YAX-dm9Uu&tn=pn0p2CMwUbYckEOh&_nc_ht=scontent-frt3-2.xx&oh=36954f5b10f570af5d7ffdd9914a9f73&oe=61DD3618",
+      "https://scontent.ftlv18-1.fna.fbcdn.net/v/t31.18172-8/469293_10200785623735770_1642242649_o.jpg?_nc_cat=108&ccb=1-5&_nc_sid=de6eea&_nc_ohc=QYZHwRSuRTsAX-tsO67&_nc_ht=scontent.ftlv18-1.fna&oh=00_AT9SLHMdlF-zdL-Ro72YW9i9vu7QpjP7E0PnJ64jDSM8ZQ&oe=620FE7DC",
     bio: `I'm a starting musician from Karney Shomron. Looking for a band to preform with my original materials.`,
     skills: ["Saxophone", "Guitar", "Bass", "Piano", "Drums"],
     genres: ["Rock", "Alt", "Acoustic", "Pop", "Alternative"],
     galleryPictures: [
-      "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/75424765_2564581346971015_1892483167529467904_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=xFlrDOe5rw0AX8azPXy&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT_2dumOPxlPfRYhvWqQFRLCaXAy6GAvkznOXhZzRL-tRw&oe=61E39B59",
-      "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/76646823_2564579766971173_4628760476229042176_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=ZdIEc5yNwmQAX_hVEJ_&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT90EMLnNWajE7iDv5uztobbu9SCzVHKdQrWZmtabruxow&oe=61E240CF",
-      "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/119950836_1250680441932985_1241221853795240522_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=y2iIkIrPuIwAX_3AMVG&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT_r3OQocTW-bhSzFErCY7XgTzJ3u1XnOs-Fx6hlYziwaQ&oe=61E59993",
-      "https://scontent.fsdv3-1.fna.fbcdn.net/v/t1.6435-9/75250913_2564580826971067_7237483063033200640_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=chPib9lSCaEAX9OtVN-&_nc_ht=scontent.fsdv3-1.fna&oh=00_AT8o0jyP0zc2TGArqLilpQoLQ4vXhfUC-7RZkpUPptpHiQ&oe=61E35A42",
+      "https://scontent.ftlv18-1.fna.fbcdn.net/v/t1.6435-9/75424765_2564581346971015_1892483167529467904_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=3z00Ie9dzYQAX-oxSuq&tn=pn0p2CMwUbYckEOh&_nc_ht=scontent.ftlv18-1.fna&oh=00_AT8nBni25ztLvKcdAnZ9OtcTGlfpboZDYfb1dVtC_iTRSw&oe=620F1CD9",
+      "https://scontent.ftlv18-1.fna.fbcdn.net/v/t1.6435-9/75250913_2564580826971067_7237483063033200640_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=-lhIZkjwHiYAX_WpTId&tn=pn0p2CMwUbYckEOh&_nc_ht=scontent.ftlv18-1.fna&oh=00_AT8VNcYUMmRQZdzfddSPG12xqI8o7UAvyfLpMQQ-WRqVKg&oe=620EDBC2",
+      "https://scontent.ftlv18-1.fna.fbcdn.net/v/t31.18172-8/14311328_1273616832662951_5861116945022254063_o.jpg?_nc_cat=103&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=rgVPyGf_yRMAX_JoWU_&_nc_ht=scontent.ftlv18-1.fna&oh=00_AT9UP8KKxxUtaUBgqpq_CL2rXEBIR5_DSD-gK-5lQno23A&oe=620E7BA4",
+      "https://scontent.ftlv18-1.fna.fbcdn.net/v/t1.6435-9/30652399_10213891730660252_2007046815945326592_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=730e14&_nc_ohc=wnAT0v3smU8AX8Bht8E&_nc_ht=scontent.ftlv18-1.fna&oh=00_AT_Zb7bf1Zty9dyK19N3WI1RLKPWjYgXlYe0ZaZrCuhXVQ&oe=620DE9A3",
     ],
     timestamps: [
       {
