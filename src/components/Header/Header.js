@@ -38,7 +38,7 @@ export default function Header() {
             icon={faCog}
             size="lg"
           />
-          <ProfilePic src="https://scontent-frt3-1.xx.fbcdn.net/v/t1.6435-9/132433140_10221371109080038_916252037937717771_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=RL-ee5Kw7nUAX8vxlZC&_nc_ht=scontent-frt3-1.xx&oh=36e2345297e8dd8f94c24bc8ac4eaaf1&oe=61DDDAD8" />
+          <ProfilePic src="https://scontent.ftlv18-1.fna.fbcdn.net/v/t1.6435-9/30703931_10213905959975976_6380633123226386432_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=174925&_nc_ohc=TIZP9kpyE84AX8Kh-so&_nc_ht=scontent.ftlv18-1.fna&oh=00_AT8vniqUZrz1P7tRq839ZxnhiOi-p1xRJDe2jUjk95aasA&oe=620D7344" />
         </div>
       </div>
     </div>

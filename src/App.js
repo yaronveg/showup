@@ -9,8 +9,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <SignUp />
-      {/* <UserProfile /> */}
+      <UserProfile />
       {/* <SearchResults /> */}
     </div>
   );
