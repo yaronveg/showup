@@ -1,11 +1,13 @@
 .SignUp > .container {
-  display: flex;
-  flex-flow: column;
-  height: 75vh;
   max-width: 500px;
-  justify-content: center;
-  & > * {
-    margin-bottom: 20px;
+  & form {
+    height: 75vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    & > * {
+      margin-bottom: 20px;
+    }
   }
   h1 {
     span {
