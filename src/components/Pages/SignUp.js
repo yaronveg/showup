@@ -21,9 +21,22 @@ export default function SignUp() {
     }
   };
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     console.log("FN is: ", firstName, ". LN is: ", lastName, ". @ is: ", email);
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "User Sign Up" }),
+    };
+
+    const response = await fetch(
+      "http://localhost:8000/api/users",
+      requestOptions
+    );
+    const responseJson = response.json();
+    console.log("response JSON: ", responseJson);
   };
 
   return (
