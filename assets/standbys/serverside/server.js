@@ -2,6 +2,7 @@ import express from "express";
 // import fetch from "node-fetch";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
@@ -9,6 +10,7 @@ const app = express();
 
 // makes sure all rerquest going through body with JSON will parse:
 app.use(express.json());
+app.use(cors());
 
 // app.use(express.static(`client/build`));
 
@@ -132,13 +134,12 @@ app.get("/api/users/:id", async (req, res) => {
 // CREATE User //
 app.post("/api/users", async (req, res) => {
   const { firstName, lastName, email } = req.body;
-
   const newUser = {
     firstName,
     lastName,
     email,
   };
-  const newUserDocument = new User(newUser).save();
+  const newUserDocument = await new User(newUser).save();
   console.log("saved to DB: ", newUserDocument);
   res.send(newUser);
 });

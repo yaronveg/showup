@@ -23,12 +23,11 @@ export default function SignUp() {
 
   const submit = async (e) => {
     e.preventDefault();
-    console.log("FN is: ", firstName, ". LN is: ", lastName, ". @ is: ", email);
 
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: "User Sign Up" }),
+      body: JSON.stringify({ firstName, lastName, email }),
     };
 
     const response = await fetch(
