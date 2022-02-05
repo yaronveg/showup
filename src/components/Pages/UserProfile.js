@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import TimeLine from "../TimeLine/TimeLine";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
-
+/*
 const users = [
   {
     firstName: "Yaron",
@@ -129,19 +129,13 @@ const users = [
     ],
   },
 ];
-
-export default function UserProfile() {
+*/
+export default function UserProfile({ user }) {
   return (
     <div className="UserProfile">
       <div className="container">
         <div className="cover-container">
-          <img
-            src={
-              users.filter((user) => user.firstName === "Yaron")[0].coverPicture
-            }
-            alt="COVER-ERR"
-            className="cover-pic"
-          />
+          <img src={user.coverPicture} alt="COVER-ERR" className="cover-pic" />
         </div>
         <div className="profile-cols">
           <div className="side-push">
@@ -149,52 +143,25 @@ export default function UserProfile() {
               <div className="side-col">
                 <div className="side-top">
                   <div className="profile-pic">
-                    <ProfilePic
-                      src={
-                        users.filter((user) => user.firstName === "Yaron")[0]
-                          .profilePicture
-                      }
-                    />
+                    <ProfilePic src={user.profilePicture} />
                   </div>
                   <h4 className="profileName">
-                    {users.filter((user) => user.firstName === "Yaron")[0]
-                      .firstName +
-                      " " +
-                      users.filter((user) => user.firstName === "Yaron")[0]
-                        .lastName}
+                    {user.firstName + " " + user.lastName}
                   </h4>
                   <UserLocation />
                   <ConnectionCount />
-                  <AudioPlayer
-                    playlist={
-                      users.filter((user) => user.firstName === "Yaron")[0]
-                        .playlist
-                    }
-                  />
+                  {user.playlist && <AudioPlayer playlist={user.playlist} />}
                   <div className="profileChips">
-                    <Chips
-                      chips={
-                        users.filter((user) => user.firstName === "Yaron")[0]
-                          .skills
-                      }
-                    />
+                    {user.skills && <Chips chips={user.skills} />}
                   </div>
                   <div className="profileChips">
-                    <Chips
-                      chips={
-                        users.filter((user) => user.firstName === "Yaron")[0]
-                          .genres
-                      }
-                    />
+                    {user.genres && <Chips chips={user.genres} />}
                   </div>
                 </div>
                 <div className="side-bot">
-                  <ProfileGallery
-                    galleryPictures={
-                      users.filter((user) => user.firstName === "Yaron")[0]
-                        .galleryPictures
-                    }
-                  />
+                  {user.galleryPictures && (
+                    <ProfileGallery galleryPictures={user.galleryPictures} />
+                  )}
                 </div>
               </div>
             </div>
@@ -202,15 +169,9 @@ export default function UserProfile() {
           <div className="main-col">
             <div className="profileBio">
               <FontAwesomeIcon className="bioIcon" icon={faFileAlt} />
-              <p className="bioText">
-                {users.filter((user) => user.firstName === "Yaron")[0].bio}
-              </p>
+              <p className="bioText">{user.bio}</p>
             </div>
-            <TimeLine
-              timestamps={
-                users.filter((user) => user.firstName === "Yaron")[0].timestamps
-              }
-            />
+            {user.timestamps && <TimeLine timestamps={user.timestamps} />}
           </div>
         </div>
       </div>
