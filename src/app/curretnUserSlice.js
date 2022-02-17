@@ -6,14 +6,6 @@ const initialState = {
   firstName: "yaron",
   lastName: "veg",
   profilePicture: "",
-  //   coverPicture: "",
-  //   bio: "",
-  //   skills: [],
-  genres: [],
-  //   galleryPictures: [],
-  //   timestamps: [],
-  //   playlist: [],
-  connections: [],
 };
 
 // true initial state:
@@ -24,14 +16,6 @@ const initialState = {
   email: "",
   lastName: "",
   profilePicture: "",
-//   coverPicture: "",
-//   bio: "",
-//   skills: [],
-  genres: [],
-//   galleryPictures: [],
-//   timestamps: [],
-//   playlist: [],
-  connections: [],
 };
 */
 
@@ -42,9 +26,9 @@ export const currentUserSlice = createSlice({
     logOut: (currentUserState) => {
       currentUserState = initialState;
     },
-    // old function, using action payload demo:
-    changeImg: (currentUserState, action) => {
-      currentUserState.index = action.payload;
+    logIn: (currentUserState, action) => {
+      currentUserState.userId = action.payload;
+      // TODO: fill in the rest of currentUserState using a query to the db.
     },
   },
 });
