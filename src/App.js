@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import Header from "./components/Header/Header";
-// import UserProfile from "./components/Pages/UserProfile";
-import SearchResults from "./components/Pages/SearchResults";
-// import SignUp from "./components/Pages/SignUp";
+import UserProfile from "./Pages/UserProfile";
+import SearchResults from "./Pages/SearchResults";
+import { Route, Routes } from "react-router-dom";
+// import SignUp from "./Pages/SignUp";
 
 function App() {
   const [userData, setUserData] = useState(null);
@@ -23,9 +24,18 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      {/* {userData && <UserProfile user={userData} />} */}
-      {usersResult && <SearchResults usersResult={usersResult} />}
+      {userData && <Header user={userData} />}
+      <Routes>
+        <Route
+          path="/"
+          element={usersResult && <SearchResults usersResult={usersResult} />}
+        />
+        <Route
+          path="/users/:id"
+          element={userData && <UserProfile user={userData} />}
+        />
+      </Routes>
+
       {/* <SignUp /> */}
     </div>
   );
