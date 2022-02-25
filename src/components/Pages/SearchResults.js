@@ -1,6 +1,6 @@
 import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect } from "react";
 import ResultCard from "../ResultCard/ResultCard";
 import {
   toggleOpen,
@@ -9,12 +9,15 @@ import {
 } from "../../app/filtersSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function SearchResults() {
+export default function SearchResults({ usersResult }) {
+  const dispatch = useDispatch();
   const { selectedFilters, filtersList } = useSelector(
     (state) => state.filters
   );
-  const dispatch = useDispatch();
-  console.log(selectedFilters);
+  console.log("selected filters: ", selectedFilters);
+  console.log("users result: ", usersResult);
+
+  const usersList = usersResult.map((user) => <ResultCard user={user} />);
   return (
     <div className="SearchResults container">
       <div className="area-side">
@@ -67,14 +70,7 @@ export default function SearchResults() {
           })}
         </div>
       </div>
-      <div className="area-results">
-        <ResultCard />
-        <ResultCard />
-        <ResultCard />
-        <ResultCard />
-        <ResultCard />
-        <ResultCard />
-      </div>
+      <div className="area-results">{usersList}</div>
     </div>
   );
 }

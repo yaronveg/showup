@@ -5,6 +5,9 @@ import Connect from "../Connect/Connect";
 import ConnectionCount from "../ConnectionCount/ConnectionCount";
 import ProfilePic from "../ProfilePic/ProfilePic";
 import UserLocation from "../UserLocation/UserLocation";
+
+// mock data:
+/*
 const users = [
   {
     firstName: "Yaron",
@@ -128,33 +131,24 @@ const users = [
 ];
 const genres = ["Rock", "Alt", "Acoustic", "Pop", "Alternative"];
 const skills = ["Saxophone", "Guitar", "Bass", "Piano", "Drums"];
+*/
 
-export default function ResultCard() {
+export default function ResultCard({ user }) {
   return (
     <div className="ResultCard">
-      <ProfilePic
-        src={
-          users.filter((user) => user.firstName === "Yaron")[0].profilePicture
-        }
-      />
+      {user.profilePicture && <ProfilePic src={user.profilePicture} />}
       <div className="card-main">
-        <a href="www.google.com">
-          {users.filter((user) => user.firstName === "Yaron")[0].firstName +
-            " " +
-            users.filter((user) => user.firstName === "Yaron")[0].lastName}
-        </a>
+        <a href="www.google.com">{user.firstName + " " + user.lastName}</a>
         <UserLocation />
-        <ConnectionCount />
+        {user.connections.length > 0 && (
+          <ConnectionCount count={user.connections.length} />
+        )}
         <Connect />
       </div>
-      <AudioPlayer
-        playlist={
-          users.filter((user) => user.firstName === "Yaron")[0].playlist
-        }
-      />
+      {user.playlist.length > 0 && <AudioPlayer playlist={user.playlist} />}
       <div className="chips">
-        <Chips chips={skills.slice(0, 2)} />
-        <Chips chips={genres.slice(0, 2)} />
+        {user.skills.length > 0 && <Chips chips={user.skills.slice(0, 2)} />}
+        {user.genres.length > 0 && <Chips chips={user.genres.slice(0, 2)} />}
       </div>
     </div>
   );

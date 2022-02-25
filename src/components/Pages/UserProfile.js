@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import TimeLine from "../TimeLine/TimeLine";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
+
 /*
 const users = [
   {
@@ -130,7 +131,9 @@ const users = [
   },
 ];
 */
+
 export default function UserProfile({ user }) {
+  console.log("user is: ", user);
   return (
     <div className="UserProfile">
       <div className="container">
@@ -149,7 +152,7 @@ export default function UserProfile({ user }) {
                     {user.firstName + " " + user.lastName}
                   </h4>
                   <UserLocation />
-                  <ConnectionCount />
+                  <ConnectionCount value={user.connections.length} />
                   {user.playlist && <AudioPlayer playlist={user.playlist} />}
                   <div className="profileChips">
                     {user.skills && <Chips chips={user.skills} />}
