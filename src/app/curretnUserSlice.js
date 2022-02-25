@@ -5,7 +5,7 @@ const initialState = {
   email: "yaronveg1@gmail.com",
   firstName: "yaron",
   lastName: "veg",
-  profilePicture: "",
+  profilePicture: "https://randomuser.me/api/portraits/women/3.jpg",
 };
 
 // true initial state:

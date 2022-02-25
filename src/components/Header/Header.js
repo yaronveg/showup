@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ProfilePic from "../ProfilePic/ProfilePic";
 import ShowUpLogo from "./logo-showup.svg";
 
-export default function Header() {
+export default function Header({ user }) {
   return (
     <div className="Header">
       <div className="container">
@@ -38,7 +38,7 @@ export default function Header() {
             icon={faCog}
             size="lg"
           />
-          <ProfilePic src="https://scontent.ftlv18-1.fna.fbcdn.net/v/t1.6435-9/30703931_10213905959975976_6380633123226386432_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=174925&_nc_ohc=TIZP9kpyE84AX8Kh-so&_nc_ht=scontent.ftlv18-1.fna&oh=00_AT8vniqUZrz1P7tRq839ZxnhiOi-p1xRJDe2jUjk95aasA&oe=620D7344" />
+          <ProfilePic src={user.profilePicture} />
         </div>
       </div>
     </div>
