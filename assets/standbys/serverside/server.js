@@ -3,10 +3,13 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-
+// import usersRoute from "./routes/users";
 dotenv.config();
 
 const app = express();
+
+//Routes
+app.use("/", require("./routes/users"));
 
 // makes sure all rerquest going through body with JSON will parse:
 app.use(express.json());
@@ -161,10 +164,12 @@ app.delete("/api/users/:id", async (req, res) => {
   res.send(deleted);
 });
 
-// const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
-// mongoose.connect(
-//   `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
-//   async (err) => {
-mongoose.connect("mongodb://localhost:27017/showUpLocal", async (err) => {
-  err ? console.log(err) : app.listen(process.env.PORT || 8000);
-});
+const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
+// mongoose.connect("mongodb://localhost:27017/showUpLocal", async (err) => {
+mongoose.connect(
+  `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
+  // `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
+  async (err) => {
+    err ? console.log(err) : app.listen(process.env.PORT || 8000);
+  }
+);
