@@ -5,12 +5,9 @@ const router = express.Router();
 
 router.get("/", (req, res) => res.send("welcome"));
 
-// a "catchall" handler for any request that doesn't match the C.R.U.D. - will send back React's Index.html file.
-router.get(!`/api${"*"}` && "*", (req, res) => {
-  res.sendFile(__dirname + "/client/build/index.html");
-});
-
 ////////////// C.R.U.D - CREATE, READ, UPDATE, DELETE //////////////
+
+// CREATE User // MOVED TO LOGIN ROUTES, under "signup"
 
 // READ //
 router.get("/api/users", async (req, res) => {
@@ -50,19 +47,6 @@ router.get("/api/users/:id", async (req, res) => {
   res.send(await User.findById(id));
 });
 
-// CREATE User //
-router.post("/api/users", async (req, res) => {
-  const { firstName, lastName, email } = req.body;
-  const newUser = {
-    firstName,
-    lastName,
-    email,
-  };
-  const newUserDocument = await new User(newUser).save();
-  console.log("saved to DB: ", newUserDocument);
-  res.send(newUser);
-});
-
 // UPDATE //
 router.put("/api/users/:id", async (req, res) => {
   const { id } = req.params;
@@ -80,5 +64,4 @@ router.delete("/api/users/:id", async (req, res) => {
   res.send(deleted);
 });
 
-// module.exports = router;
 export default router;
