@@ -1,3 +1,4 @@
+import { TextField } from "@mui/material";
 import { useState } from "react";
 
 export default function SignUp() {
@@ -24,12 +25,15 @@ export default function SignUp() {
   const submit = async (e) => {
     e.preventDefault();
 
+    // TODO: signup VALIDATION MISSING
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ firstName, lastName, email }),
     };
 
+    // TODO: form try-catch and notifications
     const response = await fetch(
       "http://localhost:8000/api/users",
       requestOptions
@@ -42,28 +46,25 @@ export default function SignUp() {
     <div className="SignUp">
       <div className="container">
         <form onSubmit={submit}>
-          <h1 className="text-primary">
+          <h1 className="text-primary text-a-c">
             SignUp <span>to</span> ShowUp
           </h1>
-          <input
-            type="name"
+          <TextField
             id="name-first"
-            placeholder="First Name"
-            className="form-field"
+            label="First Name"
+            variant="outlined"
             onInput={handleFieldChange}
           />
-          <input
-            type="name"
+          <TextField
             id="name-last"
-            placeholder="Last Name"
-            className="form-field"
+            label="Last Name"
+            variant="outlined"
             onInput={handleFieldChange}
           />
-          <input
-            type="email"
+          <TextField
             id="email"
-            placeholder="Email"
-            className="form-field"
+            label="Email"
+            variant="outlined"
             onInput={handleFieldChange}
           />
           <div className="form-actions">

@@ -4,7 +4,17 @@ import Header from "./components/Header/Header";
 import UserProfile from "./Pages/UserProfile";
 import SearchResults from "./Pages/SearchResults";
 import { Route, Routes } from "react-router-dom";
-// import SignUp from "./Pages/SignUp";
+import SignUp from "./Pages/SignUp";
+import { createTheme, ThemeProvider } from "@mui/material";
+
+const showUpTheme = createTheme({
+  palette: {
+    primary: { main: "#6173cf" },
+    secondary: { main: "#8158d5" },
+    success: { main: "#24bd4a" },
+    error: { main: "#bd2424" },
+  },
+});
 
 function App() {
   const [userData, setUserData] = useState(null);
@@ -24,19 +34,20 @@ function App() {
 
   return (
     <div className="App">
-      {userData && <Header user={userData} />}
-      <Routes>
-        <Route
-          path="/"
-          element={usersResult && <SearchResults usersResult={usersResult} />}
-        />
-        <Route
-          path="/users/:id"
-          element={userData && <UserProfile user={userData} />}
-        />
-      </Routes>
-
-      {/* <SignUp /> */}
+      <ThemeProvider theme={showUpTheme}>
+        {userData && <Header user={userData} />}
+        <Routes>
+          <Route
+            path="/"
+            element={usersResult && <SearchResults usersResult={usersResult} />}
+          />
+          <Route
+            path="/users/:id"
+            element={userData && <UserProfile user={userData} />}
+          />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </ThemeProvider>
     </div>
   );
 }
