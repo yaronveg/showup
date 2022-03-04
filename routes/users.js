@@ -3,8 +3,6 @@ import { User } from "./models/users.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => res.send("welcome"));
-
 ////////////// C.R.U.D - CREATE, READ, UPDATE, DELETE //////////////
 
 // CREATE User // MOVED TO LOGIN ROUTES, under "signup"
