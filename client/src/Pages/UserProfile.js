@@ -15,7 +15,7 @@ export default function UserProfile() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/users/${id}`)
+    fetch(`/api/users/${id}`)
       .then((data) => {
         const newData = data.json();
         return newData;

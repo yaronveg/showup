@@ -34,10 +34,7 @@ export default function SignUp() {
     };
 
     // TODO: form try-catch and notifications
-    const response = await fetch(
-      "http://localhost:8000/api/users",
-      requestOptions
-    );
+    const response = await fetch("/api/users", requestOptions);
     const responseJson = response.json();
     console.log("response JSON: ", responseJson);
   };
