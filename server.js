@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// app.use(express.static(`client/build`));
+app.use(express.static(`client/build`));
 
 ///////// ROUTES /////////
 // a "catchall" handler for any request that doesn't match the C.R.U.D. - will send back React's Index.html file.
