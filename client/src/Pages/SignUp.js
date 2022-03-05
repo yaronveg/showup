@@ -38,6 +38,10 @@ export default function SignUp() {
   const submit = async (e) => {
     e.preventDefault();
 
+    // TODO: improve signup form validations:
+    // make sure password fits password REGEX template
+    // make sure email fits email REGEX template
+    // make sure first and last names use accepted chars using REGEX
     if (firstName === "") {
       setSnackbar({
         message: "Missing first name field",
