@@ -38,8 +38,6 @@ export default function SignUp() {
   const submit = async (e) => {
     e.preventDefault();
 
-    // TODO: signup VALIDATION MISSING, make sure to improve "passwords don't match" validation
-
     if (firstName === "") {
       setSnackbar({
         message: "Missing first name field",
@@ -84,15 +82,15 @@ export default function SignUp() {
 
       try {
         const response = await fetch("/api/users", requestOptions);
-        const responseJson = response.json();
-        console.log("response JSON: ", responseJson);
-        if (responseJson.status === 409) {
+        const responseJson = await response.json();
+        const responseStatus = responseJson.status;
+        if (responseStatus === 409) {
           setSnackbar({
             message: responseJson.message,
             theme: "error",
             isOpen: true,
           });
-        } else if (responseJson.status === 200) {
+        } else if (responseStatus === 200) {
           setSnackbar({ message: "Sign-up successfull!!", isOpen: true });
         }
       } catch (e) {
@@ -109,6 +107,7 @@ export default function SignUp() {
       setSnackbar({ isOpen: false });
     }, 3600);
   };
+
   return (
     <div className="SignUp">
       <SuSnackbar
