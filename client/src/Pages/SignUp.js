@@ -8,10 +8,11 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [snackMessage, setSnackMessage] = useState("");
-  const [snackTheme, setSnackTheme] = useState("success");
-  const [openSnackbar, setOpenSnackbar] = useState(false);
-
+  const [snackbar, setSnackbar] = useState({
+    message: "",
+    theme: "success",
+    isOpen: false,
+  });
   const handleFieldChange = (e) => {
     switch (e.target.id) {
       case "name-first":
@@ -39,7 +40,37 @@ export default function SignUp() {
 
     // TODO: signup VALIDATION MISSING, make sure to improve "passwords don't match" validation
 
-    if (password === confirmPassword) {
+    if (firstName === "") {
+      setSnackbar({
+        message: "Missing first name field",
+        theme: "error",
+        isOpen: true,
+      });
+    } else if (lastName === "") {
+      setSnackbar({
+        message: "Missing last name field",
+        theme: "error",
+        isOpen: true,
+      });
+    } else if (email === "") {
+      setSnackbar({
+        message: "Missing email field",
+        theme: "error",
+        isOpen: true,
+      });
+    } else if (password === "") {
+      setSnackbar({
+        message: "Missing password field",
+        theme: "error",
+        isOpen: true,
+      });
+    } else if (password !== confirmPassword) {
+      setSnackbar({
+        message: "Passwords don't match",
+        theme: "error",
+        isOpen: true,
+      });
+    } else {
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -55,21 +86,19 @@ export default function SignUp() {
       const response = await fetch("/api/users", requestOptions);
       const responseJson = response.json();
       console.log("response JSON: ", responseJson);
-      setSnackMessage("Sign-up successfull!!");
-      setOpenSnackbar(true);
-    } else {
-      setSnackMessage("Passwords don't match");
-      setSnackTheme("error");
-      setOpenSnackbar(true);
-      console.log("");
+      setSnackbar({ message: "Sign-up successfull!!", isOpen: true });
     }
+    // TODO: better sollution to snackbar timeout, and reset
+    setTimeout(() => {
+      setSnackbar({ isOpen: false });
+    }, 3600);
   };
   return (
     <div className="SignUp">
       <SuSnackbar
-        openCall={openSnackbar}
-        message={snackMessage}
-        theme={snackTheme}
+        openCall={snackbar.isOpen}
+        message={snackbar.message}
+        theme={snackbar.theme}
       />
       <div className="container">
         <form onSubmit={submit}>
@@ -97,12 +126,14 @@ export default function SignUp() {
           <TextField
             id="password"
             label="Password"
+            type="password"
             variant="outlined"
             onInput={handleFieldChange}
           />
           <TextField
             id="confirm-password"
             label="Confirm Password"
+            type="password"
             variant="outlined"
             onInput={handleFieldChange}
           />
