@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
-// methods
+//////// METHODS ////////
 userSchema.methods.fullName = function fullName() {
   return this.firstName + " " + this.lastName;
 };

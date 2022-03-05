@@ -11,6 +11,7 @@ router.get("/api/signup", (req, res) => {
   console.log("user signup");
 });
 
+//// ADD A USER - user signup ////
 router.post("/api/users", async (req, res) => {
   const { firstName, lastName, email } = req.body;
   const newUser = {
