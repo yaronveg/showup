@@ -48,7 +48,7 @@ function App() {
               element={userData && <UserProfile user={userData} />}
             />
           </Route>
-          <Route path="/signup" element={userData && <SignUp />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </ThemeProvider>
     </div>
