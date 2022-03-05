@@ -1,5 +1,6 @@
 import { TextField } from "@mui/material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { SuSnackbar } from "../components/SuSnackbar/SuSnackbar";
 
 export default function SignUp() {
@@ -157,7 +158,7 @@ export default function SignUp() {
             onInput={handleFieldChange}
           />
           <div className="form-actions">
-            <a href="#login">Already have an acount?</a>
+            Already have an acount? <Link to="/login">Login</Link>
             <button type="submit" className="btn btn-primary">
               SUBMIT
             </button>

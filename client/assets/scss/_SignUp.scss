@@ -1,6 +1,7 @@
+.Login > .container,
 .SignUp > .container {
   max-width: 500px;
-  & form {
+  form {
     height: 75vh;
     display: flex;
     flex-flow: column;

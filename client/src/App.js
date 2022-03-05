@@ -6,6 +6,7 @@ import SearchResults from "./Pages/SearchResults";
 import { Route, Routes } from "react-router-dom";
 import SignUp from "./Pages/SignUp";
 import { createTheme, ThemeProvider } from "@mui/material";
+import Login from "./Pages/Login";
 
 const showUpTheme = createTheme({
   palette: {
@@ -38,6 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={userData && <Header user={userData} />}>
             <Route path="signup" element={<SignUp />} />
+            <Route path="login" element={<Login />} />
             <Route
               path="search"
               element={

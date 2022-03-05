@@ -43,6 +43,7 @@ export default function Header({ user }) {
             size="lg"
           /> */}
             <Link to="/signup">Signup</Link>
+            <Link to="/login">Login</Link>
             <Link to="/users/61fd846eef6febfc4e212bf7">
               <ProfilePic src={user.profilePicture} />
             </Link>
