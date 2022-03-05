@@ -2,7 +2,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, Outlet } from "react-router-dom";
 import ProfilePic from "../../components/ProfilePic/ProfilePic";
-// import ShowUpLogo from "./logo-showup.svg";
 import ShowUpLogo from "./showup-logo-text.svg";
 
 export default function Header({ user }) {

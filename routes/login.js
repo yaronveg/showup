@@ -3,25 +3,24 @@ import { User } from "./models/users.js";
 
 const router = express.Router();
 
-router.get("/api/login", (req, res) => {
-  console.log("user login");
-});
-
-router.get("/api/signup", (req, res) => {
-  console.log("user signup");
-});
+//// USER LOGIN ////
 
 //// ADD A USER - user signup ////
 router.post("/api/users", async (req, res) => {
   const { firstName, lastName, email } = req.body;
-  const newUser = {
-    firstName,
-    lastName,
-    email,
-  };
-  const newUserDocument = await new User(newUser).save();
-  console.log("saved to DB: ", newUserDocument);
-  res.send(newUser);
+
+  const alreadyExists = await User.findOne({ email: email });
+  if (alreadyExists !== null) {
+    res.send({ msg: "user already in the system", payload: alreadyExists });
+  } else {
+    const newUser = {
+      firstName,
+      lastName,
+      email,
+    };
+    const newUserDocument = await new User(newUser).save();
+    res.send({ msg: "saved to DB", payload: newUserDocument });
+  }
 });
 
 export default router;

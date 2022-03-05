@@ -37,6 +37,7 @@ function App() {
       <ThemeProvider theme={showUpTheme}>
         <Routes>
           <Route path="/" element={userData && <Header user={userData} />}>
+            <Route path="signup" element={<SignUp />} />
             <Route
               path="search"
               element={
@@ -48,7 +49,6 @@ function App() {
               element={userData && <UserProfile user={userData} />}
             />
           </Route>
-          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </ThemeProvider>
     </div>
