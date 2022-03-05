@@ -44,7 +44,7 @@ export default function Header({ user }) {
           /> */}
             <Link to="/signup">Signup</Link>
             <Link to="/login">Login</Link>
-            <Link to="/users/61fd846eef6febfc4e212bf7">
+            <Link to="/users/6223b639a492aa7129eea3dd">
               <ProfilePic src={user.profilePicture} />
             </Link>
           </div>
