@@ -35,16 +35,19 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={showUpTheme}>
-        {userData && <Header user={userData} />}
         <Routes>
-          <Route
-            path="/search"
-            element={usersResult && <SearchResults usersResult={usersResult} />}
-          />
-          <Route
-            path="/users/:id"
-            element={userData && <UserProfile user={userData} />}
-          />
+          <Route path="/" element={userData && <Header user={userData} />}>
+            <Route
+              path="search"
+              element={
+                usersResult && <SearchResults usersResult={usersResult} />
+              }
+            />
+            <Route
+              path="users/:id"
+              element={userData && <UserProfile user={userData} />}
+            />
+          </Route>
           <Route path="/signup" element={userData && <SignUp />} />
         </Routes>
       </ThemeProvider>
