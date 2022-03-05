@@ -82,11 +82,27 @@ export default function SignUp() {
         }),
       };
 
-      // TODO: form try-catch and notifications
-      const response = await fetch("/api/users", requestOptions);
-      const responseJson = response.json();
-      console.log("response JSON: ", responseJson);
-      setSnackbar({ message: "Sign-up successfull!!", isOpen: true });
+      try {
+        const response = await fetch("/api/users", requestOptions);
+        const responseJson = response.json();
+        console.log("response JSON: ", responseJson);
+        if (responseJson.status === 409) {
+          setSnackbar({
+            message: responseJson.message,
+            theme: "error",
+            isOpen: true,
+          });
+        } else if (responseJson.status === 200) {
+          setSnackbar({ message: "Sign-up successfull!!", isOpen: true });
+        }
+      } catch (e) {
+        setSnackbar({
+          message: "Server error, logged to console",
+          theme: "error",
+          isOpen: true,
+        });
+        console.log(" Server error: ", e);
+      }
     }
     // TODO: better sollution to snackbar timeout, and reset
     setTimeout(() => {

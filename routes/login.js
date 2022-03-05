@@ -11,7 +11,11 @@ router.post("/api/users", async (req, res) => {
 
   const alreadyExists = await User.findOne({ email: email });
   if (alreadyExists !== null) {
-    res.send({ msg: "user already in the system", payload: alreadyExists });
+    res.send({
+      status: 409,
+      message: "User already in the system",
+      payload: alreadyExists,
+    });
   } else {
     const newUser = {
       firstName,
@@ -19,7 +23,7 @@ router.post("/api/users", async (req, res) => {
       email,
     };
     const newUserDocument = await new User(newUser).save();
-    res.send({ msg: "saved to DB", payload: newUserDocument });
+    res.send({ status: 200, message: "Saved to DB", payload: newUserDocument });
   }
 });
 
