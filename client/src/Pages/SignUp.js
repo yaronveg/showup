@@ -1,10 +1,16 @@
-import { TextField } from "@mui/material";
+import { Alert, Snackbar, TextField } from "@mui/material";
 import { useState } from "react";
+import { SuSnackbar } from "../components/SuSnackbar/SuSnackbar";
 
 export default function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [snackMessage, setSnackMessage] = useState("");
+  const [snackTheme, setSnackTheme] = useState("success");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleFieldChange = (e) => {
     switch (e.target.id) {
@@ -17,6 +23,12 @@ export default function SignUp() {
       case "email":
         setEmail(e.target.value);
         break;
+      case "password":
+        setPassword(e.target.value);
+        break;
+      case "confirm-password":
+        setConfirmPassword(e.target.value);
+        break;
       default:
         console.log("field change triggered. field not recognized.");
     }
@@ -25,22 +37,40 @@ export default function SignUp() {
   const submit = async (e) => {
     e.preventDefault();
 
-    // TODO: signup VALIDATION MISSING
+    // TODO: signup VALIDATION MISSING, make sure to improve "passwords don't match" validation
 
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ firstName, lastName, email }),
-    };
+    if (password === confirmPassword) {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          password,
+        }),
+      };
 
-    // TODO: form try-catch and notifications
-    const response = await fetch("/api/users", requestOptions);
-    const responseJson = response.json();
-    console.log("response JSON: ", responseJson);
+      // TODO: form try-catch and notifications
+      const response = await fetch("/api/users", requestOptions);
+      const responseJson = response.json();
+      console.log("response JSON: ", responseJson);
+      setSnackMessage("Sign-up successfull!!");
+      setOpenSnackbar(true);
+    } else {
+      setSnackMessage("Passwords don't match");
+      setSnackTheme("error");
+      setOpenSnackbar(true);
+      console.log("");
+    }
   };
-
   return (
     <div className="SignUp">
+      <SuSnackbar
+        openCall={openSnackbar}
+        message={snackMessage}
+        theme={snackTheme}
+      />
       <div className="container">
         <form onSubmit={submit}>
           <h1 className="text-primary text-a-c">
@@ -61,6 +91,18 @@ export default function SignUp() {
           <TextField
             id="email"
             label="Email"
+            variant="outlined"
+            onInput={handleFieldChange}
+          />
+          <TextField
+            id="password"
+            label="Password"
+            variant="outlined"
+            onInput={handleFieldChange}
+          />
+          <TextField
+            id="confirm-password"
+            label="Confirm Password"
             variant="outlined"
             onInput={handleFieldChange}
           />
