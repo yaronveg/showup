@@ -1,6 +1,7 @@
-import { faCog, faSearch, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ProfilePic from "../ProfilePic/ProfilePic";
+import { Link } from "react-router-dom";
+import ProfilePic from "../../components/ProfilePic/ProfilePic";
 import ShowUpLogo from "./logo-showup.svg";
 
 export default function Header({ user }) {
@@ -8,10 +9,12 @@ export default function Header({ user }) {
     <div className="Header">
       <div className="container">
         <div className="areaLogo">
-          <div className="logoAndTag">
-            <img src={ShowUpLogo} alt="showUpLogo" className="logo" />
-            <span className="tagline">Music Industry Connections</span>
-          </div>
+          <Link to="/search">
+            <div className="logoAndTag">
+              <img src={ShowUpLogo} alt="showUpLogo" className="logo" />
+              <span className="tagline">Music Industry Connections</span>
+            </div>
+          </Link>
           <div className="areaSearch">
             <input
               className="searchBar"
@@ -28,7 +31,7 @@ export default function Header({ user }) {
           </div>
         </div>
         <div className="areaIcons">
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             className="gigsIcon header-icon"
             icon={faUsers}
             size="lg"
@@ -37,8 +40,11 @@ export default function Header({ user }) {
             className="settingsIcon header-icon"
             icon={faCog}
             size="lg"
-          />
-          <ProfilePic src={user.profilePicture} />
+          /> */}
+          <Link to="/signup">Signup</Link>
+          <Link to="/users/61fd846eef6febfc4e212bf7">
+            <ProfilePic src={user.profilePicture} />
+          </Link>
         </div>
       </div>
     </div>

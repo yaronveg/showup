@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import Header from "./components/Header/Header";
+import Header from "./layouts/Header/Header";
 import UserProfile from "./Pages/UserProfile";
 import SearchResults from "./Pages/SearchResults";
 import { Route, Routes } from "react-router-dom";
@@ -35,22 +35,17 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={showUpTheme}>
+        {userData && <Header user={userData} />}
         <Routes>
-          <Route path="/signup" element={<SignUp />} />
-          {userData && (
-            <Header user={userData}>
-              <Route
-                path="/"
-                element={
-                  usersResult && <SearchResults usersResult={usersResult} />
-                }
-              />
-              <Route
-                path="/users/:id"
-                element={userData && <UserProfile user={userData} />}
-              />
-            </Header>
-          )}
+          <Route
+            path="/search"
+            element={usersResult && <SearchResults usersResult={usersResult} />}
+          />
+          <Route
+            path="/users/:id"
+            element={userData && <UserProfile user={userData} />}
+          />
+          <Route path="/signup" element={userData && <SignUp />} />
         </Routes>
       </ThemeProvider>
     </div>

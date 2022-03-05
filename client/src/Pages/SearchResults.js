@@ -18,11 +18,11 @@ export default function SearchResults({ usersResult }) {
   return (
     <div className="SearchResults container">
       <div className="area-side">
-        <div className="main-cat">
+        {/* <div className="main-cat">
           <button className="active">All</button>
           <button>Players</button>
           <button>Gigs</button>
-        </div>
+        </div> */}
         <div className="filters">
           {filtersList.map((filter) => {
             const icon = filter.isOpen ? faAngleDown : faAngleRight;
