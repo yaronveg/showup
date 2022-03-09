@@ -18,17 +18,18 @@ const userSchema = new mongoose.Schema({
   timestamps: [
     {
       year: Number,
-      stamps: [
-        {
-          id: String,
-          date: String,
-          type: String,
-          detail: String,
-          text: String,
-          subText: String,
-          subType: String,
-        },
-      ],
+      stamps:
+        [
+          {
+            id: Number,
+            date: String,
+            type: String, // why did this need a null option?
+            detail: String,
+            text: String,
+            subText: String,
+            subType: String,
+          },
+        ] | null,
     },
   ],
   playlist: [{ src: String, title: String, duration: Number }],

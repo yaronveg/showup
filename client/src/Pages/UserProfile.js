@@ -25,6 +25,8 @@ export default function UserProfile() {
       });
   }, [id]);
 
+  console.log("user: ", user);
+
   return (
     user && (
       <div className="UserProfile">

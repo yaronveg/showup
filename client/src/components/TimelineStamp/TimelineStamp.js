@@ -70,7 +70,11 @@ export default function TimelineStamp({
       );
       break;
     default:
-      returner = type;
+      returner = (
+        <div className="TimelineStamp">
+          <span>A timestamp appears!</span>
+        </div>
+      );
       break;
   }
   return returner;
