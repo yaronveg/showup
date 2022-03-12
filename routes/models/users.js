@@ -1,6 +1,6 @@
-//USER SCHEMA START
-
 import mongoose from "mongoose";
+
+//USER SCHEMA START
 
 // refer to a scheme and define.
 const userSchema = new mongoose.Schema({

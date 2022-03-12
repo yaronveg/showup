@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import LocalStrategy from "passport-local";
+// import JwtStrategy from "passport-jwt";
 import bcrypt from "bcryptjs";
 import { User } from "../routes/models/users";
 
