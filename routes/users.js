@@ -1,5 +1,6 @@
 import express from "express";
-import { User } from "./models/users.js";
+import { User } from "../models/users.js";
+import { checkAuth } from "../middlewares/checkAuth.js";
 
 const router = express.Router();
 
@@ -46,7 +47,7 @@ router.get("/api/users/:id", async (req, res) => {
 });
 
 // UPDATE //
-router.put("/api/users/:id", async (req, res) => {
+router.put("/api/users/:id", checkAuth, async (req, res) => {
   const { id } = req.params;
   const body = req.body;
   const user = await User.findById(id);
@@ -56,10 +57,14 @@ router.put("/api/users/:id", async (req, res) => {
 });
 
 // DELETE //
-router.delete("/api/users/:id", async (req, res) => {
+router.delete("/api/users/:id", checkAuth, async (req, res) => {
   const { id } = req.params;
   const deleted = await User.findByIdAndDelete(id);
   res.send(deleted);
+});
+
+router.post("/api/auth", checkAuth, async (req, res) => {
+  res.status(200).json({ message: "ok!" });
 });
 
 export default router;
