@@ -14,6 +14,7 @@ router.post("/api/login", async (req, res) => {
 
   if (users.length < 1) {
     return res.status(401).json({
+      status: 401,
       message: "Auth failed",
     });
   }
@@ -22,6 +23,7 @@ router.post("/api/login", async (req, res) => {
   bcrypt.compare(password, user.password, (error, result) => {
     if (error) {
       return res.status(401).json({
+        status: 401,
         message: "Auth failed",
       });
     }
@@ -37,11 +39,13 @@ router.post("/api/login", async (req, res) => {
       );
 
       return res.status(200).json({
+        status: 200,
         message: "Auth successful",
         token,
       });
     }
     return res.status(401).json({
+      status: 401,
       message: "Auth failed",
     });
   });

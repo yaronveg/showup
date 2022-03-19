@@ -56,6 +56,7 @@ export default function Login() {
         const response = await fetch("/api/login", requestOptions);
         const responseJson = await response.json();
         const responseStatus = responseJson.status;
+        console.log("response status! ", responseJson);
         if (responseStatus === 409) {
           setSnackbar({
             message: responseJson.message,
