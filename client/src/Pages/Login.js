@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
+import { Link } from "react-router-dom";
 import { SuSnackbar } from "../components/SuSnackbar/SuSnackbar";
 
 export default function Login() {
@@ -27,9 +28,7 @@ export default function Login() {
     e.preventDefault();
 
     // TODO: improve signup form validations:
-    // make sure password fits password REGEX template
     // make sure email fits email REGEX template
-    // make sure first and last names use accepted chars using REGEX
     if (email === "") {
       setSnackbar({
         message: "Missing email field",
@@ -44,29 +43,29 @@ export default function Login() {
       });
     } else {
       // TODO: modify request options to fit login
-      //   const requestOptions = {
-      //     method: "POST",
-      //     headers: { "Content-Type": "application/json" },
-      //     body: JSON.stringify({
-      //       email,
-      //       password,
-      //     }),
-      //   };
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      };
 
-      // TODO: modify server call to fit login
       try {
-        // const response = await fetch("/api/users", requestOptions);
-        // const responseJson = await response.json();
-        // const responseStatus = responseJson.status;
-        // if (responseStatus === 409) {
-        //   setSnackbar({
-        //     message: responseJson.message,
-        //     theme: "error",
-        //     isOpen: true,
-        //   });
-        // } else if (responseStatus === 200) {
-        //   setSnackbar({ message: "Sign-up successfull!!", isOpen: true });
-        // }
+        const response = await fetch("/api/login", requestOptions);
+        const responseJson = await response.json();
+        const responseStatus = responseJson.status;
+        if (responseStatus === 409) {
+          setSnackbar({
+            message: responseJson.message,
+            theme: "error",
+            isOpen: true,
+          });
+        } else if (responseStatus === 200) {
+          console.log("login successful: ", responseJson);
+          setSnackbar({ message: "Sign-up successfull!!", isOpen: true });
+        }
       } catch (e) {
         setSnackbar({
           message: "Server error, logged to console",
@@ -83,7 +82,7 @@ export default function Login() {
   };
 
   return (
-    <div className="Login">
+    <div className="Login Signup">
       <SuSnackbar
         openCall={snackbar.isOpen}
         message={snackbar.message}
