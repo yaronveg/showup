@@ -26,13 +26,13 @@ export const currentUserSlice = createSlice({
     logOut: (currentUserState) => {
       currentUserState = initialState;
     },
-    logIn: (currentUserState, action) => {
+    login: (currentUserState, action) => {
       currentUserState.userId = action.payload;
       // TODO: fill in the rest of currentUserState using a query to the db.
     },
   },
 });
 
-export const { logOut } = currentUserSlice.actions;
+export const { logOut, login } = currentUserSlice.actions;
 
 export default currentUserSlice.reducer;

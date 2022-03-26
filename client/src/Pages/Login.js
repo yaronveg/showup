@@ -66,6 +66,7 @@ export default function Login() {
         } else if (responseStatus === 200) {
           console.log("login successful: ", responseJson);
           document.cookie = `token=${responseJson.token}`;
+          // dispatch(login(userId? ))
           setSnackbar({ message: "Sign-up successfull!!", isOpen: true });
         }
       } catch (e) {
