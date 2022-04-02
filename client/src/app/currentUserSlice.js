@@ -1,12 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  userId: 135792468,
-  email: "yaronveg1@gmail.com",
-  firstName: "yaron",
-  lastName: "veg",
-  profilePicture: "https://randomuser.me/api/portraits/women/3.jpg",
+  token: "",
 };
+
+// const initialState = {
+//   userId: 135792468,
+//   email: "yaronveg1@gmail.com",
+//   firstName: "yaron",
+//   lastName: "veg",
+//   profilePicture: "https://randomuser.me/api/portraits/women/3.jpg",
+// };
 
 // true initial state:
 /*
@@ -27,7 +31,8 @@ export const currentUserSlice = createSlice({
       currentUserState = initialState;
     },
     login: (currentUserState, action) => {
-      currentUserState.userId = action.payload;
+      currentUserState.token = action.payload;
+      // currentUserState.userId = action.payload;
       // TODO: fill in the rest of currentUserState using a query to the db.
     },
   },
