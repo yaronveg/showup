@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import SignUp from "./Pages/SignUp";
 import { createTheme, ThemeProvider } from "@mui/material";
 import Login from "./Pages/Login";
+import { getUser, getUsers } from "./api/user";
 
 const showUpTheme = createTheme({
   palette: {
@@ -21,12 +22,12 @@ function App() {
   const [userData, setUserData] = useState(null);
   const [usersResult, setUsersResult] = useState(null);
   useEffect(() => {
-    fetch("/api/users/6223b639a492aa7129eea3dd")
+    getUser("6223b639a492aa7129eea3dd")
       .then((data) => data.json())
       .then((data) => {
         setUserData(data);
       });
-    fetch("/api/users")
+    getUsers
       .then((data) => data.json())
       .then((data) => {
         setUsersResult(data);

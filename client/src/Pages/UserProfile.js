@@ -9,13 +9,14 @@ import TimeLine from "../components/TimeLine/TimeLine";
 import AudioPlayer from "../components/AudioPlayer/AudioPlayer";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getUser } from "../api/user";
 
 export default function UserProfile() {
   const [user, setUserData] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`/api/users/${id}`)
+    getUser(id)
       .then((data) => {
         const newData = data.json();
         return newData;
